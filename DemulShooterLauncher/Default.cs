@@ -20,6 +20,7 @@ namespace DemulShooterLauncher
                 MessageBox.Show("Error. Insert in DemulShooterFolder");
                 Environment.Exit(-1);
             }
+
             InitializeComponent();
         }
 
@@ -39,6 +40,13 @@ namespace DemulShooterLauncher
         {
             string nameGame = ComboBDemulList.Text;
             StartCommand start = new StartCommand(nameGame, "Demul");
+            //  TODO
+            //  Da inserire a caricamento pagina iniziale
+            if (!start.IsRunAsAdmin())
+            {
+                MessageBox.Show("Error!Run to administrator");
+                Environment.Exit(-2);
+            }
             start.Run();
 
         }
