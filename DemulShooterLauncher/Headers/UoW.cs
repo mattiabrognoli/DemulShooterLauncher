@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Security.Principal;
 
 namespace DemulShooterLauncher.Headers
 {
@@ -17,6 +18,11 @@ namespace DemulShooterLauncher.Headers
             if (!File.Exists(".\\DemulShooterX64.exe"))
                 result = false;
             return result;
+        }
+
+        static public bool checkAdmin(WindowsPrincipal principal)
+        {
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
 
         static public string GetCode(string name)

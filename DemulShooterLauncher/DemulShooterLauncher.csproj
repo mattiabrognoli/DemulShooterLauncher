@@ -52,6 +52,8 @@
     <Compile Include="Default.Designer.cs">
       <DependentUpon>Default.cs</DependentUpon>
     </Compile>
+    <Compile Include="Headers\Game.cs" />
+    <Compile Include="Headers\LoadList.cs" />
     <Compile Include="Headers\StartCommand.cs" />
     <Compile Include="Headers\UoW.cs" />
     <Compile Include="main.cs" />
@@ -80,6 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="list.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -28,24 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ComboBDemulList = new System.Windows.Forms.ComboBox();
+            this.CbBListGames = new System.Windows.Forms.ComboBox();
             this.BtnStart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // ComboBDemulList
+            // CbBListGames
             // 
-            this.ComboBDemulList.FormattingEnabled = true;
-            this.ComboBDemulList.Items.AddRange(new object[] {
-            "Confidential Mission",
-            "House of the Dead 2",
-            "Ninja Assault",
-            "Lupin the Third",
-            "The Maze of the kings"});
-            this.ComboBDemulList.Location = new System.Drawing.Point(47, 22);
-            this.ComboBDemulList.Name = "ComboBDemulList";
-            this.ComboBDemulList.Size = new System.Drawing.Size(159, 21);
-            this.ComboBDemulList.TabIndex = 0;
-            this.ComboBDemulList.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.CbBListGames.FormattingEnabled = true;
+            this.CbBListGames.Location = new System.Drawing.Point(47, 22);
+            this.CbBListGames.Name = "CbBListGames";
+            this.CbBListGames.Size = new System.Drawing.Size(159, 21);
+            this.CbBListGames.TabIndex = 0;
+            this.CbBListGames.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // BtnStart
             // 
@@ -63,7 +57,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(251, 250);
             this.Controls.Add(this.BtnStart);
-            this.Controls.Add(this.ComboBDemulList);
+            this.Controls.Add(this.CbBListGames);
             this.Name = "Default";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -72,7 +66,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox ComboBDemulList;
+        private System.Windows.Forms.ComboBox CbBListGames;
         private System.Windows.Forms.Button BtnStart;
     }
 }
