@@ -6,19 +6,32 @@ using System.Threading.Tasks;
 
 namespace DemulShooterLauncher.Headers
 {
-    class Game
+    public class Game
     {
         public string Name { get; }
         public string Target { get; }
         public string Rom { get; }
-        public string Arguments { get; }
+        public string Starter { get; }
+        public string Recommended { get; }
 
-        public Game(string name, string target, string rom, string arguments)
+        public Game(string name, string target, string rom, string recommended)
         {
             Name = name;
             Target = target;
             Rom = rom;
-            Arguments = arguments == null ? string.Empty : arguments;
+            Starter = "DemulShooter.exe";
+            //Arguments = arguments == null ? null : arguments;
+            Recommended = recommended;
+        }
+
+        public Game(string name, string target, string rom, string recommended, bool starter)
+        {
+            Name = name;
+            Target = target;
+            Rom = rom;
+            Starter = starter == true ? "DemulShooterX64.exe" : "DemulShooter.exe";
+            //Arguments = arguments == null ? null : arguments;
+            Recommended = recommended;
         }
 
     }

@@ -25,6 +25,15 @@ namespace DemulShooterLauncher.Headers
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
 
+        static public Game GetGame(List<Game> games, string name)
+        {
+            foreach (var curr in games)
+                if (curr.Name == name)
+                    return curr;
+            return null;
+        }
+
+        //NON SERVE PIU
         static public string GetCode(string name)
         {
             if (name == "Confidential Mission")
@@ -41,6 +50,7 @@ namespace DemulShooterLauncher.Headers
             return string.Empty;
         }
 
+        //NON SERVE PIU'
         static public string GetMachine(string machine)
         {
             if (machine == "Demul")
