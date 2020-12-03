@@ -30,7 +30,7 @@ namespace DemulShooterLauncher.Headers
 
             Process p = Process.Start(myProcessInfo);
             StreamWriter sw = p.StandardInput;
-            string inputText = rootPath + "\\DemulShooter.exe -target=" + current.Target + " -rom=" + current.Rom + arguments;
+            string inputText = rootPath + "\\" + current.Starter + " -target=" + current.Target + " -rom=" + current.Rom + arguments;
             sw.WriteLine(inputText);
             sw.Close();
 

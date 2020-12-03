@@ -12,12 +12,9 @@ namespace DemulShooterLauncher.Headers
     {
         static public bool checkPaths()
         {
-            bool result = true;
-            if (!File.Exists(".\\DemulShooter.exe"))
-                result = false;
-            if (!File.Exists(".\\DemulShooterX64.exe"))
-                result = false;
-            return result;
+            if (!File.Exists(".\\DemulShooter.exe") || !File.Exists(".\\DemulShooterX64.exe") || !File.Exists("DsCore.dll"))
+                return false;
+            return true;
         }
 
         static public bool checkAdmin(WindowsPrincipal principal)
@@ -33,21 +30,44 @@ namespace DemulShooterLauncher.Headers
             return null;
         }
 
-        //NON SERVE PIU
-        static public string GetCode(string name)
+        static public string TextToArgument(string text)
         {
-            if (name == "Confidential Mission")
-                return "confmiss";
-            if (name == "House of the Dead 2")
-                return "hotd2";
-            if (name == "Lupin the Third")
-                return "lupinsho";
-            if (name == "The Maze of the kings")
-                return "mok";
-            if (name == "Ninja Assault")
-                return "Ninja Assault";
+            if (text == "No resize")
+                return "noresize";
+            if (text == "Widescreen")
+                return "widescreen";
+            if (text == "No autoreload")
+                return "noautoreload";
+            if (text == "No autofire")
+                return "noautofire";
+            if (text == "No guns")
+                return "noguns";
+            if (text == "No Crosshair")
+                return "nocrosshair";
+            if (text == "DDI number")
+                return "ddinumber";
+            if (text == "Verbs")
+                return "v";
 
-            return string.Empty;
+            return null;
+        }
+
+        static public bool CanDisableArgument (string text)
+        {
+            if (text == "No resize")
+                return true;
+            if (text == "No autoreload")
+                return true;
+            if (text == "No autofire")
+                return true;
+            if (text == "No guns")
+                return true;
+            if (text == "No Crosshair")
+                return true;
+            if (text == "DDI number")
+                return true;
+
+            return false;
         }
 
         //NON SERVE PIU'

@@ -47,8 +47,31 @@ namespace DemulShooterLauncher.Headers
             GameList.Add(new Game("Extreme Hunting", "demul07a", "xtrmhunt", "noresize"));
             GameList.Add(new Game("Extreme Hunting 2", "demul07a", "xtrmhnt2", "noresize"));
 
+            //Chihiro
+            GameList.Add(new Game("Virtual Cop 3", "chihiro", "vcop3", null));
+
+            //GlobalVR
+            GameList.Add(new Game("Aliens Extermination", "globalvr", "aliens", null));
+            GameList.Add(new Game("Fright Fear Land", "globalvr", "fearland", null));
+
+            //Lidenbergh
+            GameList.Add(new Game("Too Spicy", "lindbergh", "2spicy", null));
+            GameList.Add(new Game("House of the dead 4", "lindbergh", "hotd4", null));
+            GameList.Add(new Game("Let's Go Jungle", "lindbergh", "lgj", null));
+            GameList.Add(new Game("Let's Go Jungle (1 player)", "lindbergh", "lgjsp", null));
+            GameList.Add(new Game("Rambo", "lindbergh", "rambo", "nocrosshair"));
+
+
             //Windows Games
+            GameList.Add(new Game("Art Is Dead", "windows", "artdead", null));
+            GameList.Add(new Game("Heavy Fire Afghanistan", "windows", "hfa", null));
+            GameList.Add(new Game("Heavy Fire Afghanistan (Dual Player)", "windows", "hfa2p", null));
+            GameList.Add(new Game("Heavy Fire Shattered Spear", "windows", "hfss", null));
+            GameList.Add(new Game("Heavy Fire Shattered Spear (Dual Player)", "windows", "hfss2p", null));
+            GameList.Add(new Game("Reload", "windows", "reload", "nocrosshair"));
+            GameList.Add(new Game("House of The Dead II (PC)", "windows", "hod2pc", null));
             GameList.Add(new Game("House of The Dead III", "windows", "hod3pc", "noautoreload noguns"));
+            GameList.Add(new Game("House of The Dead : Overkill", "windows", "hodo", "noautoreload noguns"));
 
             /*
             Esempio xml create

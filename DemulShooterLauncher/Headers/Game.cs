@@ -21,7 +21,7 @@ namespace DemulShooterLauncher.Headers
             Rom = rom;
             Starter = "DemulShooter.exe";
             //Arguments = arguments == null ? null : arguments;
-            Recommended = recommended;
+            Recommended = recommended == null ? string.Empty : recommended;
         }
 
         public Game(string name, string target, string rom, string recommended, bool starter)
@@ -31,8 +31,8 @@ namespace DemulShooterLauncher.Headers
             Rom = rom;
             Starter = starter == true ? "DemulShooterX64.exe" : "DemulShooter.exe";
             //Arguments = arguments == null ? null : arguments;
-            Recommended = recommended;
-        }
+            Recommended = recommended == null ? string.Empty : recommended;
 
+        }
     }
 }

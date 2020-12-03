@@ -17,6 +17,7 @@ namespace DemulShooterLauncher
     {
         string pathRoot;
         List<Game> games;
+        List<CheckBox> checkBoxes;
 
         //TODO effettuare test vari
 
@@ -54,29 +55,50 @@ namespace DemulShooterLauncher
 
         private void Default_Load(object sender, EventArgs e)
         {
+           
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             LoadList load = new LoadList();
             games = load.Loading();
             foreach (Game g in games)
                 CbBListGames.Items.Add(g.Name);
-        }
 
+            checkBoxes = new List<CheckBox>();
+            foreach (var control in this.Controls) // I guess this is your form
+                if (control is CheckBox)
+                {
+                    var tmp = (CheckBox)control;
+                    checkBoxes.Add(tmp);
+                    tmp.Enabled = false;
+                }
+        }
 
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Game curr = UoW.GetGame(games, CbBListGames.Text);
-            CheckBox tmp;
+            if (CbBListGames.Text == string.Empty)
+                disableAllCheckBox();
+            else
+            {
+                Game curr = UoW.GetGame(games, CbBListGames.Text);
 
-            foreach (var control in this.Controls) // I guess this is your form
-                if (control is CheckBox)
-                {
-                    tmp = (CheckBox)control;
-                    if (curr.Recommended != null && curr.Recommended.Contains(tmp.Text))
-                        tmp.Checked = true;
-                    else
-                        tmp.Checked = false;
-                }
+                foreach (var control in checkBoxes) // I guess this is your form
+                    if (control is CheckBox)
+                    {
+                        if (curr.Recommended != null && curr.Recommended.Contains(UoW.TextToArgument(control.Text)))
+                        {
+                            control.Enabled = true;
+                            control.Checked = true;
+                        }
+                        else
+                        {
+                            if (UoW.CanDisableArgument(control.Text))
+                                control.Enabled = false;
+                            else
+                                control.Enabled = true;
+                            control.Checked = false;
+                        }
+                    }
+            }
         }
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
@@ -118,9 +140,16 @@ namespace DemulShooterLauncher
             return args;
         }
 
-        private void checkNoReload_CheckedChanged(object sender, EventArgs e)
+        private void enableAllCheckBox()
         {
+            foreach (var control in checkBoxes)
+                control.Enabled = true;
+        }
 
+        private void disableAllCheckBox()
+        {
+            foreach (var control in checkBoxes)
+                control.Enabled = false;
         }
     }
 }

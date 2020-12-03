@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.CbBListGames = new System.Windows.Forms.ComboBox();
             this.BtnStart = new System.Windows.Forms.Button();
             this.checkNoResize = new System.Windows.Forms.CheckBox();
@@ -38,23 +39,36 @@
             this.checkNoCross = new System.Windows.Forms.CheckBox();
             this.checkDdinumber = new System.Windows.Forms.CheckBox();
             this.checkVerbs = new System.Windows.Forms.CheckBox();
-            this.LblOptions = new System.Windows.Forms.Label();
+            this.TipNoResize = new System.Windows.Forms.ToolTip(this.components);
+            this.TipWidescreen = new System.Windows.Forms.ToolTip(this.components);
+            this.TipNoReload = new System.Windows.Forms.ToolTip(this.components);
+            this.TipNoGuns = new System.Windows.Forms.ToolTip(this.components);
+            this.TipNoFire = new System.Windows.Forms.ToolTip(this.components);
+            this.TipNoCross = new System.Windows.Forms.ToolTip(this.components);
+            this.TipddNumber = new System.Windows.Forms.ToolTip(this.components);
+            this.TipVerbs = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // CbBListGames
             // 
+            this.CbBListGames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CbBListGames.DropDownHeight = 150;
             this.CbBListGames.FormattingEnabled = true;
+            this.CbBListGames.IntegralHeight = false;
             this.CbBListGames.Location = new System.Drawing.Point(102, 12);
             this.CbBListGames.Name = "CbBListGames";
-            this.CbBListGames.Size = new System.Drawing.Size(194, 21);
+            this.CbBListGames.Size = new System.Drawing.Size(188, 21);
             this.CbBListGames.TabIndex = 0;
             this.CbBListGames.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // BtnStart
             // 
-            this.BtnStart.Location = new System.Drawing.Point(170, 408);
+            this.BtnStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnStart.Location = new System.Drawing.Point(152, 211);
             this.BtnStart.Name = "BtnStart";
-            this.BtnStart.Size = new System.Drawing.Size(75, 23);
+            this.BtnStart.Size = new System.Drawing.Size(98, 23);
             this.BtnStart.TabIndex = 2;
             this.BtnStart.Text = "Start";
             this.BtnStart.UseVisualStyleBackColor = true;
@@ -62,101 +76,117 @@
             // 
             // checkNoResize
             // 
+            this.checkNoResize.AccessibleDescription = "";
+            this.checkNoResize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkNoResize.AutoSize = true;
-            this.checkNoResize.Location = new System.Drawing.Point(33, 281);
+            this.checkNoResize.Location = new System.Drawing.Point(29, 80);
             this.checkNoResize.Name = "checkNoResize";
-            this.checkNoResize.Size = new System.Drawing.Size(65, 17);
+            this.checkNoResize.Size = new System.Drawing.Size(70, 17);
             this.checkNoResize.TabIndex = 3;
-            this.checkNoResize.Text = "noresize";
+            this.checkNoResize.Text = "No resize";
+            this.TipNoResize.SetToolTip(this.checkNoResize, "Fix demul bug (exiting fullscreen when shooting upper left corner). This will blo" +
+        "ck all mouse inputs to Demul GUI (menus, etc...)");
             this.checkNoResize.UseVisualStyleBackColor = true;
             // 
             // checkWidescreen
             // 
+            this.checkWidescreen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkWidescreen.AutoSize = true;
-            this.checkWidescreen.Location = new System.Drawing.Point(170, 281);
+            this.checkWidescreen.Location = new System.Drawing.Point(166, 80);
             this.checkWidescreen.Name = "checkWidescreen";
-            this.checkWidescreen.Size = new System.Drawing.Size(80, 17);
+            this.checkWidescreen.Size = new System.Drawing.Size(83, 17);
             this.checkWidescreen.TabIndex = 4;
-            this.checkWidescreen.Text = "widescreen";
+            this.checkWidescreen.Text = "Widescreen";
+            this.TipWidescreen.SetToolTip(this.checkWidescreen, "Demul widescreen hack, works for some games");
             this.checkWidescreen.UseVisualStyleBackColor = true;
             // 
             // checkNoReload
             // 
+            this.checkNoReload.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkNoReload.AutoSize = true;
-            this.checkNoReload.Location = new System.Drawing.Point(298, 281);
+            this.checkNoReload.Location = new System.Drawing.Point(269, 80);
             this.checkNoReload.Name = "checkNoReload";
-            this.checkNoReload.Size = new System.Drawing.Size(88, 17);
+            this.checkNoReload.Size = new System.Drawing.Size(93, 17);
             this.checkNoReload.TabIndex = 5;
-            this.checkNoReload.Text = "noautoreload";
+            this.checkNoReload.Text = "No autoreload";
+            this.TipNoReload.SetToolTip(this.checkNoReload, "Disable ingame auto-reload when last bullet is fired in hod3pc");
             this.checkNoReload.UseVisualStyleBackColor = true;
-            this.checkNoReload.CheckedChanged += new System.EventHandler(this.checkNoReload_CheckedChanged);
             // 
             // checkNoFire
             // 
+            this.checkNoFire.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkNoFire.AutoSize = true;
-            this.checkNoFire.Location = new System.Drawing.Point(33, 323);
+            this.checkNoFire.Location = new System.Drawing.Point(29, 122);
             this.checkNoFire.Name = "checkNoFire";
-            this.checkNoFire.Size = new System.Drawing.Size(76, 17);
+            this.checkNoFire.Size = new System.Drawing.Size(78, 17);
             this.checkNoFire.TabIndex = 6;
-            this.checkNoFire.Text = "noautofire ";
+            this.checkNoFire.Text = "No autofire";
+            this.TipNoFire.SetToolTip(this.checkNoFire, "Disable ingame auto-fire (Sega Golden Gun only)");
             this.checkNoFire.UseVisualStyleBackColor = true;
             // 
             // checkNoGuns
             // 
+            this.checkNoGuns.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkNoGuns.AutoSize = true;
-            this.checkNoGuns.Location = new System.Drawing.Point(170, 323);
+            this.checkNoGuns.Location = new System.Drawing.Point(166, 122);
             this.checkNoGuns.Name = "checkNoGuns";
-            this.checkNoGuns.Size = new System.Drawing.Size(61, 17);
+            this.checkNoGuns.Size = new System.Drawing.Size(66, 17);
             this.checkNoGuns.TabIndex = 7;
-            this.checkNoGuns.Text = "noguns";
+            this.checkNoGuns.Text = "No guns";
+            this.TipNoGuns.SetToolTip(this.checkNoGuns, "Hide guns display in hod3pc during gameplay (just like real arcade machine)");
             this.checkNoGuns.UseVisualStyleBackColor = true;
             // 
             // checkNoCross
             // 
+            this.checkNoCross.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkNoCross.AutoSize = true;
-            this.checkNoCross.Location = new System.Drawing.Point(298, 323);
+            this.checkNoCross.Location = new System.Drawing.Point(269, 122);
             this.checkNoCross.Name = "checkNoCross";
-            this.checkNoCross.Size = new System.Drawing.Size(80, 17);
+            this.checkNoCross.Size = new System.Drawing.Size(86, 17);
             this.checkNoCross.TabIndex = 8;
-            this.checkNoCross.Text = "nocrosshair";
+            this.checkNoCross.Text = "No Crosshair";
+            this.TipNoCross.SetToolTip(this.checkNoCross, " Hide in-game crosshair (for “Reload” on windows and \"Rambo\" on Lindbergh)");
             this.checkNoCross.UseVisualStyleBackColor = true;
             // 
             // checkDdinumber
             // 
+            this.checkDdinumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkDdinumber.AutoSize = true;
-            this.checkDdinumber.Location = new System.Drawing.Point(33, 364);
+            this.checkDdinumber.Enabled = false;
+            this.checkDdinumber.Location = new System.Drawing.Point(29, 164);
             this.checkDdinumber.Name = "checkDdinumber";
-            this.checkDdinumber.Size = new System.Drawing.Size(75, 17);
+            this.checkDdinumber.Size = new System.Drawing.Size(83, 17);
             this.checkDdinumber.TabIndex = 9;
-            this.checkDdinumber.Text = "ddinumber";
+            this.checkDdinumber.Text = "DDI number";
+            this.TipddNumber.SetToolTip(this.checkDdinumber, "Dolphin\'s DirectInput number for P2 device (optional, default = 2)");
             this.checkDdinumber.UseVisualStyleBackColor = true;
             // 
             // checkVerbs
             // 
+            this.checkVerbs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkVerbs.AutoSize = true;
-            this.checkVerbs.Location = new System.Drawing.Point(170, 364);
+            this.checkVerbs.Enabled = false;
+            this.checkVerbs.Location = new System.Drawing.Point(166, 164);
             this.checkVerbs.Name = "checkVerbs";
-            this.checkVerbs.Size = new System.Drawing.Size(32, 17);
+            this.checkVerbs.Size = new System.Drawing.Size(53, 17);
             this.checkVerbs.TabIndex = 10;
-            this.checkVerbs.Text = "v";
+            this.checkVerbs.Text = "Verbs";
+            this.TipVerbs.SetToolTip(this.checkVerbs, "Verbose ON (debug information written to a text file)");
             this.checkVerbs.UseVisualStyleBackColor = true;
-            this.checkVerbs.Visible = false;
-            // 
-            // LblOptions
-            // 
-            this.LblOptions.AutoSize = true;
-            this.LblOptions.Location = new System.Drawing.Point(170, 220);
-            this.LblOptions.Name = "LblOptions";
-            this.LblOptions.Size = new System.Drawing.Size(46, 13);
-            this.LblOptions.TabIndex = 11;
-            this.LblOptions.Text = "Options:";
             // 
             // Default
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 455);
-            this.Controls.Add(this.LblOptions);
+            this.ClientSize = new System.Drawing.Size(410, 253);
             this.Controls.Add(this.checkVerbs);
             this.Controls.Add(this.checkDdinumber);
             this.Controls.Add(this.checkNoCross);
@@ -187,7 +217,14 @@
         private System.Windows.Forms.CheckBox checkNoCross;
         private System.Windows.Forms.CheckBox checkDdinumber;
         private System.Windows.Forms.CheckBox checkVerbs;
-        private System.Windows.Forms.Label LblOptions;
+        private System.Windows.Forms.ToolTip TipNoResize;
+        private System.Windows.Forms.ToolTip TipWidescreen;
+        private System.Windows.Forms.ToolTip TipNoReload;
+        private System.Windows.Forms.ToolTip TipNoGuns;
+        private System.Windows.Forms.ToolTip TipNoFire;
+        private System.Windows.Forms.ToolTip TipNoCross;
+        private System.Windows.Forms.ToolTip TipddNumber;
+        private System.Windows.Forms.ToolTip TipVerbs;
     }
 }
 
