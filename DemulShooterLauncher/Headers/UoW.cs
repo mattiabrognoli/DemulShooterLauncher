@@ -69,16 +69,5 @@ namespace DemulShooterLauncher.Headers
 
             return false;
         }
-
-        //NON SERVE PIU'
-        static public string GetMachine(string machine)
-        {
-            if (machine == "Demul")
-                return "demul07a";
-
-            return string.Empty;
-        }
-
-
     }
 }

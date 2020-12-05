@@ -17,27 +17,26 @@ namespace DemulShooterLauncher.Headers
 
         public bool Run(string rootPath, Game current, string arguments)
         {
-
             if (current == null)
                 return false;
 
-            System.Diagnostics.ProcessStartInfo myProcessInfo = new System.Diagnostics.ProcessStartInfo();
+            ProcessStartInfo myProcessInfo = new ProcessStartInfo();
             myProcessInfo.FileName = Environment.ExpandEnvironmentVariables("%SystemRoot%") + "\\System32\\cmd.exe";
-            //myProcessInfo.Arguments = "-target=" + Machine + " -rom = " + Name + " -noresize";
             myProcessInfo.Verb = "runas";
             myProcessInfo.RedirectStandardInput = true;
             myProcessInfo.UseShellExecute = false;
 
-            Process p = Process.Start(myProcessInfo);
-            StreamWriter sw = p.StandardInput;
-            string inputText = rootPath + "\\" + current.Starter + " -target=" + current.Target + " -rom=" + current.Rom + arguments;
-            sw.WriteLine(inputText);
-            sw.Close();
-
-            p.WaitForExit();
-
+            using (Process p = Process.Start(myProcessInfo))
+            {
+                using (StreamWriter sw = p.StandardInput)
+                {
+                    string inputText = rootPath + "\\" + current.Starter + " -target=" + current.Target + " -rom=" + current.Rom + arguments;
+                    sw.WriteLine(inputText);
+                    sw.Close();
+                }
+                p.WaitForExit();
+            }
             return true;
-
         }
 
     }

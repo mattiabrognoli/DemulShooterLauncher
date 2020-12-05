@@ -22,10 +22,7 @@ namespace DemulShooterLauncher.Headers
 
         public List<Game> Loading()
         {
-
             List<Game> GameList = new List<Game>();
-
-            //TODO Aggiungere tutti giochi
 
             //Demul
             GameList.Add(new Game("Brave Fire fighters", "demul07a", "braveff", "noresize"));
@@ -61,7 +58,6 @@ namespace DemulShooterLauncher.Headers
             GameList.Add(new Game("Let's Go Jungle (1 player)", "lindbergh", "lgjsp", null));
             GameList.Add(new Game("Rambo", "lindbergh", "rambo", "nocrosshair"));
 
-
             //Windows Games
             GameList.Add(new Game("Art Is Dead", "windows", "artdead", null));
             GameList.Add(new Game("Heavy Fire Afghanistan", "windows", "hfa", null));
@@ -73,41 +69,34 @@ namespace DemulShooterLauncher.Headers
             GameList.Add(new Game("House of The Dead III", "windows", "hod3pc", "noautoreload noguns"));
             GameList.Add(new Game("House of The Dead : Overkill", "windows", "hodo", "noautoreload noguns"));
 
-            /*
-            Esempio xml create
+            //Model2
+            GameList.Add(new Game("Behind Enemy Lines", "model2", "bel", null));
+            GameList.Add(new Game("Gunblade NY", "model2", "gunblade", null));
+            GameList.Add(new Game("House of the Dead", "model2", "hotd", null));
+            GameList.Add(new Game("Railchase 2", "model2", "rchase2", null));
+            GameList.Add(new Game("Virtua Cop", "model2", "vcop", null));
+            GameList.Add(new Game("Virtua Cop 2", "model2", "vcop2", null));
 
-            if (File.Exists(PathXML))
-            {
-                var uri = new System.Uri(PathXML);
-                XmlReaderSettings settings = new XmlReaderSettings { IgnoreComments = true, IgnoreWhitespace = true };
-                //XmlTextReader xmlReader = new XmlTextReader(PathXML);
-                XmlReader xmlReader = XmlReader.Create(uri.AbsoluteUri, settings);
-                string name = null, target = null, rom = null, arguments = null;
-                while (xmlReader.Read())
-                {
-                    if (xmlReader.NodeType == XmlNodeType.Element)
-                        switch (xmlReader.Name)
-                        {
-                            case "name":
-                                name = xmlReader.Name;
-                                break;
-                            case "target":
-                                target = xmlReader.Name;
-                                break;
-                            case "rom":
-                                rom = xmlReader.Name;
-                                break;
-                            case "arguments":
-                                arguments = xmlReader.Name;
-                                break;
-                        }
-                    if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name == "/game")
-                        GameList.Add(new Game(name, target, rom, arguments));
-                }
+            //RingWide
+            GameList.Add(new Game("Let's Go Island : Lost on the Island of Tropics", "ringwide", "lgi", null));
+            GameList.Add(new Game("Let's Go Island : Lost on the Island of Tropics 3D", "ringwide", "lgi3D", null));
+            GameList.Add(new Game("Operation G.H.O.S.T.", "ringwide", "og", null));
+            GameList.Add(new Game("Sega Dream Riders", "ringwide", "sdr", null));
+            GameList.Add(new Game("Sega Golden Gun", "ringwide", "sgg", null));
+            GameList.Add(new Game("Transformers : Human Alliance", "ringwide", "tha", null));
 
+            //Taito Type X
+            GameList.Add(new Game("Elevator Action Death Parade", "ttx", "eapd", null));
+            GameList.Add(new Game("Silent Hill the Arcade", "ttx", "sha", null));
+            GameList.Add(new Game("Gaia Attack 4", "ttx", "gattack4", null));
+            GameList.Add(new Game("Gundam : Spirit of Zeon", "ttx", "gsoz", null));
+            GameList.Add(new Game("Gundam : Spirit of Zeon ( DualScreen )", "ttx", "gsoz2p", null));
+            GameList.Add(new Game("Haunted Museum", "ttx", "hmuseum", null));
+            GameList.Add(new Game("Haunted Museum 2", "ttx", "hmuseum2", null));
+            GameList.Add(new Game("Music Gun Gun! 2", "ttx", "mgungun2", null));
 
-
-            }*/
+            //Seha Nu
+            GameList.Add(new Game("Luigi Mansion Arcade", "seganu", "lma", null, true));
 
             GameList.Sort((p, q) => p.Name.CompareTo(q.Name));
 

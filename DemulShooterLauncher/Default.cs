@@ -19,8 +19,6 @@ namespace DemulShooterLauncher
         List<Game> games;
         List<CheckBox> checkBoxes;
 
-        //TODO effettuare test vari
-
         public Default()
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -46,24 +44,17 @@ namespace DemulShooterLauncher
             }
 
             InitializeComponent();
-
-
-
-            //print default
-            // CbBListGames.Text = CbBListGames.Items[0].ToString();
         }
 
         private void Default_Load(object sender, EventArgs e)
         {
-           
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             LoadList load = new LoadList();
             games = load.Loading();
             foreach (Game g in games)
                 CbBListGames.Items.Add(g.Name);
 
             checkBoxes = new List<CheckBox>();
-            foreach (var control in this.Controls) // I guess this is your form
+            foreach (var control in this.Controls)
                 if (control is CheckBox)
                 {
                     var tmp = (CheckBox)control;
@@ -71,7 +62,6 @@ namespace DemulShooterLauncher
                     tmp.Enabled = false;
                 }
         }
-
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -81,9 +71,8 @@ namespace DemulShooterLauncher
             {
                 Game curr = UoW.GetGame(games, CbBListGames.Text);
 
-                foreach (var control in checkBoxes) // I guess this is your form
-                    if (control is CheckBox)
-                    {
+                if(curr != null)
+                    foreach (var control in checkBoxes)
                         if (curr.Recommended != null && curr.Recommended.Contains(UoW.TextToArgument(control.Text)))
                         {
                             control.Enabled = true;
@@ -97,13 +86,7 @@ namespace DemulShooterLauncher
                                 control.Enabled = true;
                             control.Checked = false;
                         }
-                    }
             }
-        }
-
-        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
-        {
-
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
@@ -119,31 +102,17 @@ namespace DemulShooterLauncher
             }
             else
                 MessageBox.Show("Game not found!");
-
-
         }
 
         private string getArguments()
         {
             string args = string.Empty;
 
-            foreach (var control in this.Controls) // I guess this is your form
-            {
-                CheckBox tmp;
-                if (control is CheckBox)
-                    if (((CheckBox)control).Checked)
-                    {
-                        tmp = (CheckBox)control;
-                        args += " -" + tmp.Text;
-                    }
-            }
-            return args;
-        }
-
-        private void enableAllCheckBox()
-        {
             foreach (var control in checkBoxes)
-                control.Enabled = true;
+                if (control.Checked)
+                    args += " -" + control.Text;
+
+            return args;
         }
 
         private void disableAllCheckBox()

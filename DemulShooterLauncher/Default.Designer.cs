@@ -51,14 +51,12 @@
             // 
             // CbBListGames
             // 
-            this.CbBListGames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.CbBListGames.DropDownHeight = 150;
             this.CbBListGames.FormattingEnabled = true;
             this.CbBListGames.IntegralHeight = false;
-            this.CbBListGames.Location = new System.Drawing.Point(102, 12);
+            this.CbBListGames.Location = new System.Drawing.Point(73, 12);
             this.CbBListGames.Name = "CbBListGames";
-            this.CbBListGames.Size = new System.Drawing.Size(188, 21);
+            this.CbBListGames.Size = new System.Drawing.Size(254, 21);
             this.CbBListGames.TabIndex = 0;
             this.CbBListGames.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
