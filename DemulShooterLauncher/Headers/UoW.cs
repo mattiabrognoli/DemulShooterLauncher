@@ -49,7 +49,30 @@ namespace DemulShooterLauncher.Headers
             if (text == "Verbs")
                 return "v";
 
-            return null;
+            return string.Empty;
+        }
+
+        static public string TargetToText(string text)
+        {
+            if (text == "chihiro")
+                return "Cxbx-Reloaded";
+            if (text == "demul07a")
+                return "Demul 0.7a 180428";
+            if (text == "dolphin5")
+                return "Dolphin x64 v5.0";
+            if (text == "globalvr")
+                return "Global VR Games";
+            if (text == "lindbergh")
+                return "TeknoParrot Loader";
+            if (text == "model2")
+                return "Model2 Emulator v1.1a";
+            if (text == "ringwide")
+                return "TeknoParrot Loader";
+            if (text == "ttx")
+                return "Taito Type X Games";
+            if (text == "windows")
+                return "Windows Games";
+            return string.Empty;
         }
 
         static public bool CanDisableArgument (string text)

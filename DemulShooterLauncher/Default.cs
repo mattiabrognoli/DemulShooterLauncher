@@ -61,6 +61,7 @@ namespace DemulShooterLauncher
                     checkBoxes.Add(tmp);
                     tmp.Enabled = false;
                 }
+            lblTarget.Text = "";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,7 +72,10 @@ namespace DemulShooterLauncher
             {
                 Game curr = UoW.GetGame(games, CbBListGames.Text);
 
-                if(curr != null)
+                if (curr != null)
+                {
+                    lblTarget.Text = UoW.TargetToText(curr.Target);
+
                     foreach (var control in checkBoxes)
                         if (curr.Recommended != null && curr.Recommended.Contains(UoW.TextToArgument(control.Text)))
                         {
@@ -86,6 +90,7 @@ namespace DemulShooterLauncher
                                 control.Enabled = true;
                             control.Checked = false;
                         }
+                }
             }
         }
 
@@ -110,7 +115,7 @@ namespace DemulShooterLauncher
 
             foreach (var control in checkBoxes)
                 if (control.Checked)
-                    args += " -" + control.Text;
+                    args += " -" + UoW.TextToArgument(control.Text);
 
             return args;
         }

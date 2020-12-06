@@ -47,6 +47,8 @@
             this.TipNoCross = new System.Windows.Forms.ToolTip(this.components);
             this.TipddNumber = new System.Windows.Forms.ToolTip(this.components);
             this.TipVerbs = new System.Windows.Forms.ToolTip(this.components);
+            this.lblTarget = new System.Windows.Forms.Label();
+            this.lblText1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CbBListGames
@@ -180,11 +182,31 @@
             this.TipVerbs.SetToolTip(this.checkVerbs, "Verbose ON (debug information written to a text file)");
             this.checkVerbs.UseVisualStyleBackColor = true;
             // 
+            // lblTarget
+            // 
+            this.lblTarget.AutoSize = true;
+            this.lblTarget.Location = new System.Drawing.Point(73, 40);
+            this.lblTarget.Name = "lblTarget";
+            this.lblTarget.Size = new System.Drawing.Size(48, 13);
+            this.lblTarget.TabIndex = 11;
+            this.lblTarget.Text = "lblTarget";
+            // 
+            // lblText1
+            // 
+            this.lblText1.AutoSize = true;
+            this.lblText1.Location = new System.Drawing.Point(30, 39);
+            this.lblText1.Name = "lblText1";
+            this.lblText1.Size = new System.Drawing.Size(41, 13);
+            this.lblText1.TabIndex = 12;
+            this.lblText1.Text = "Target:";
+            // 
             // Default
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(410, 253);
+            this.Controls.Add(this.lblText1);
+            this.Controls.Add(this.lblTarget);
             this.Controls.Add(this.checkVerbs);
             this.Controls.Add(this.checkDdinumber);
             this.Controls.Add(this.checkNoCross);
@@ -223,6 +245,8 @@
         private System.Windows.Forms.ToolTip TipNoCross;
         private System.Windows.Forms.ToolTip TipddNumber;
         private System.Windows.Forms.ToolTip TipVerbs;
+        private System.Windows.Forms.Label lblTarget;
+        private System.Windows.Forms.Label lblText1;
     }
 }
 
