@@ -1,15 +1,10 @@
 ﻿using DemulShooterLauncher.Headers;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace DemulShooterLauncher
 {
@@ -18,6 +13,7 @@ namespace DemulShooterLauncher
         string pathRoot;
         List<Game> games;
         List<CheckBox> checkBoxes;
+        Game curr;
 
         public Default()
         {
@@ -70,7 +66,7 @@ namespace DemulShooterLauncher
                 disableAllCheckBox();
             else
             {
-                Game curr = UoW.GetGame(games, CbBListGames.Text);
+                curr = UoW.GetGame(games, CbBListGames.Text);
 
                 if (curr != null)
                 {
@@ -124,6 +120,17 @@ namespace DemulShooterLauncher
         {
             foreach (var control in checkBoxes)
                 control.Enabled = false;
+        }
+
+        private void linkHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if(curr != null)
+                using (Process.Start(UoW.GetLink(curr.Target))) { }
+        }
+
+        private void linkWiki_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            using (Process.Start("https://github.com/argonlefou/DemulShooter/wiki")) { }
         }
     }
 }

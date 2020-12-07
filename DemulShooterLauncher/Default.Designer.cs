@@ -49,6 +49,8 @@
             this.TipVerbs = new System.Windows.Forms.ToolTip(this.components);
             this.lblTarget = new System.Windows.Forms.Label();
             this.lblText1 = new System.Windows.Forms.Label();
+            this.linkHelp = new System.Windows.Forms.LinkLabel();
+            this.linkWiki = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // CbBListGames
@@ -200,11 +202,35 @@
             this.lblText1.TabIndex = 12;
             this.lblText1.Text = "Target:";
             // 
+            // linkHelp
+            // 
+            this.linkHelp.AutoSize = true;
+            this.linkHelp.Location = new System.Drawing.Point(253, 40);
+            this.linkHelp.Name = "linkHelp";
+            this.linkHelp.Size = new System.Drawing.Size(29, 13);
+            this.linkHelp.TabIndex = 13;
+            this.linkHelp.TabStop = true;
+            this.linkHelp.Text = "Help";
+            this.linkHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkHelp_LinkClicked);
+            // 
+            // linkWiki
+            // 
+            this.linkWiki.AutoSize = true;
+            this.linkWiki.Location = new System.Drawing.Point(30, 15);
+            this.linkWiki.Name = "linkWiki";
+            this.linkWiki.Size = new System.Drawing.Size(28, 13);
+            this.linkWiki.TabIndex = 14;
+            this.linkWiki.TabStop = true;
+            this.linkWiki.Text = "Wiki";
+            this.linkWiki.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkWiki_LinkClicked);
+            // 
             // Default
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(410, 253);
+            this.Controls.Add(this.linkWiki);
+            this.Controls.Add(this.linkHelp);
             this.Controls.Add(this.lblText1);
             this.Controls.Add(this.lblTarget);
             this.Controls.Add(this.checkVerbs);
@@ -247,6 +273,8 @@
         private System.Windows.Forms.ToolTip TipVerbs;
         private System.Windows.Forms.Label lblTarget;
         private System.Windows.Forms.Label lblText1;
+        private System.Windows.Forms.LinkLabel linkHelp;
+        private System.Windows.Forms.LinkLabel linkWiki;
     }
 }
 

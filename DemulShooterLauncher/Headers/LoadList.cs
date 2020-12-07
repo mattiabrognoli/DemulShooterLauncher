@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.IO.IsolatedStorage;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.Serialization;
+﻿using System.Collections.Generic;
 
 namespace DemulShooterLauncher.Headers
 {
@@ -67,7 +58,7 @@ namespace DemulShooterLauncher.Headers
             GameList.Add(new Game("Reload", "windows", "reload", "nocrosshair"));
             GameList.Add(new Game("House of The Dead II (PC)", "windows", "hod2pc", null));
             GameList.Add(new Game("House of The Dead III", "windows", "hod3pc", "noautoreload noguns"));
-            GameList.Add(new Game("House of The Dead : Overkill", "windows", "hodo", "noautoreload noguns"));
+            GameList.Add(new Game("House of The Dead : Overkill", "windows", "hodo", null));
 
             //Model2
             GameList.Add(new Game("Behind Enemy Lines", "model2", "bel", null));

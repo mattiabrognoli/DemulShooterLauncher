@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Security.Principal;
 
@@ -28,6 +24,29 @@ namespace DemulShooterLauncher.Headers
                 if (curr.Name == name)
                     return curr;
             return null;
+        }
+
+        static public string GetLink(string text)
+        {
+            if (text == "chihiro")
+                return "https://github.com/argonlefou/DemulShooter/wiki/Chihiro";
+            if (text == "demul07a")
+                return "https://github.com/argonlefou/DemulShooter/wiki/Demul";
+            if (text == "dolphin5")
+                return "https://github.com/argonlefou/DemulShooter/wiki/Dolphin";
+            if (text == "globalvr")
+                return "https://github.com/argonlefou/DemulShooter/wiki/Global-VR";
+            if (text == "lindbergh")
+                return "https://github.com/argonlefou/DemulShooter/wiki/Lindbergh";
+            if (text == "model2")
+                return "https://github.com/argonlefou/DemulShooter/wiki/Model2";
+            if (text == "ringwide")
+                return "https://github.com/argonlefou/DemulShooter/wiki/RingWide";
+            if (text == "ttx")
+                return "https://github.com/argonlefou/DemulShooter/wiki/Taito-Type-X";
+            if (text == "windows")
+                return "https://github.com/argonlefou/DemulShooter/wiki/Windows-games";
+            return string.Empty;
         }
 
         static public string TextToArgument(string text)
