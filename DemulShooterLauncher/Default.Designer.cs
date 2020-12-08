@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.CbBListGames = new System.Windows.Forms.ComboBox();
             this.BtnStart = new System.Windows.Forms.Button();
             this.checkNoResize = new System.Windows.Forms.CheckBox();
             this.checkWidescreen = new System.Windows.Forms.CheckBox();
@@ -47,30 +46,18 @@
             this.TipNoCross = new System.Windows.Forms.ToolTip(this.components);
             this.TipddNumber = new System.Windows.Forms.ToolTip(this.components);
             this.TipVerbs = new System.Windows.Forms.ToolTip(this.components);
-            this.lblTarget = new System.Windows.Forms.Label();
-            this.lblText1 = new System.Windows.Forms.Label();
-            this.linkHelp = new System.Windows.Forms.LinkLabel();
+            this.listBoxTarget = new System.Windows.Forms.ListBox();
+            this.listBoxRom = new System.Windows.Forms.ListBox();
             this.linkWiki = new System.Windows.Forms.LinkLabel();
+            this.linkHelp = new System.Windows.Forms.LinkLabel();
+            this.linkPatches = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
-            // 
-            // CbBListGames
-            // 
-            this.CbBListGames.DropDownHeight = 150;
-            this.CbBListGames.FormattingEnabled = true;
-            this.CbBListGames.IntegralHeight = false;
-            this.CbBListGames.Location = new System.Drawing.Point(73, 12);
-            this.CbBListGames.Name = "CbBListGames";
-            this.CbBListGames.Size = new System.Drawing.Size(254, 21);
-            this.CbBListGames.TabIndex = 0;
-            this.CbBListGames.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // BtnStart
             // 
-            this.BtnStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnStart.Location = new System.Drawing.Point(152, 211);
+            this.BtnStart.Location = new System.Drawing.Point(447, 184);
             this.BtnStart.Name = "BtnStart";
-            this.BtnStart.Size = new System.Drawing.Size(98, 23);
+            this.BtnStart.Size = new System.Drawing.Size(69, 23);
             this.BtnStart.TabIndex = 2;
             this.BtnStart.Text = "Start";
             this.BtnStart.UseVisualStyleBackColor = true;
@@ -79,10 +66,8 @@
             // checkNoResize
             // 
             this.checkNoResize.AccessibleDescription = "";
-            this.checkNoResize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkNoResize.AutoSize = true;
-            this.checkNoResize.Location = new System.Drawing.Point(29, 80);
+            this.checkNoResize.Location = new System.Drawing.Point(450, 46);
             this.checkNoResize.Name = "checkNoResize";
             this.checkNoResize.Size = new System.Drawing.Size(70, 17);
             this.checkNoResize.TabIndex = 3;
@@ -93,10 +78,8 @@
             // 
             // checkWidescreen
             // 
-            this.checkWidescreen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkWidescreen.AutoSize = true;
-            this.checkWidescreen.Location = new System.Drawing.Point(166, 80);
+            this.checkWidescreen.Location = new System.Drawing.Point(450, 4);
             this.checkWidescreen.Name = "checkWidescreen";
             this.checkWidescreen.Size = new System.Drawing.Size(83, 17);
             this.checkWidescreen.TabIndex = 4;
@@ -106,10 +89,8 @@
             // 
             // checkNoReload
             // 
-            this.checkNoReload.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkNoReload.AutoSize = true;
-            this.checkNoReload.Location = new System.Drawing.Point(269, 80);
+            this.checkNoReload.Location = new System.Drawing.Point(450, 92);
             this.checkNoReload.Name = "checkNoReload";
             this.checkNoReload.Size = new System.Drawing.Size(93, 17);
             this.checkNoReload.TabIndex = 5;
@@ -119,10 +100,8 @@
             // 
             // checkNoFire
             // 
-            this.checkNoFire.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkNoFire.AutoSize = true;
-            this.checkNoFire.Location = new System.Drawing.Point(29, 122);
+            this.checkNoFire.Location = new System.Drawing.Point(450, 25);
             this.checkNoFire.Name = "checkNoFire";
             this.checkNoFire.Size = new System.Drawing.Size(78, 17);
             this.checkNoFire.TabIndex = 6;
@@ -132,10 +111,8 @@
             // 
             // checkNoGuns
             // 
-            this.checkNoGuns.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkNoGuns.AutoSize = true;
-            this.checkNoGuns.Location = new System.Drawing.Point(166, 122);
+            this.checkNoGuns.Location = new System.Drawing.Point(450, 69);
             this.checkNoGuns.Name = "checkNoGuns";
             this.checkNoGuns.Size = new System.Drawing.Size(66, 17);
             this.checkNoGuns.TabIndex = 7;
@@ -145,10 +122,8 @@
             // 
             // checkNoCross
             // 
-            this.checkNoCross.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkNoCross.AutoSize = true;
-            this.checkNoCross.Location = new System.Drawing.Point(269, 122);
+            this.checkNoCross.Location = new System.Drawing.Point(450, 115);
             this.checkNoCross.Name = "checkNoCross";
             this.checkNoCross.Size = new System.Drawing.Size(86, 17);
             this.checkNoCross.TabIndex = 8;
@@ -158,11 +133,9 @@
             // 
             // checkDdinumber
             // 
-            this.checkDdinumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkDdinumber.AutoSize = true;
             this.checkDdinumber.Enabled = false;
-            this.checkDdinumber.Location = new System.Drawing.Point(29, 164);
+            this.checkDdinumber.Location = new System.Drawing.Point(450, 138);
             this.checkDdinumber.Name = "checkDdinumber";
             this.checkDdinumber.Size = new System.Drawing.Size(83, 17);
             this.checkDdinumber.TabIndex = 9;
@@ -172,11 +145,9 @@
             // 
             // checkVerbs
             // 
-            this.checkVerbs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkVerbs.AutoSize = true;
             this.checkVerbs.Enabled = false;
-            this.checkVerbs.Location = new System.Drawing.Point(166, 164);
+            this.checkVerbs.Location = new System.Drawing.Point(450, 161);
             this.checkVerbs.Name = "checkVerbs";
             this.checkVerbs.Size = new System.Drawing.Size(53, 17);
             this.checkVerbs.TabIndex = 10;
@@ -184,55 +155,71 @@
             this.TipVerbs.SetToolTip(this.checkVerbs, "Verbose ON (debug information written to a text file)");
             this.checkVerbs.UseVisualStyleBackColor = true;
             // 
-            // lblTarget
+            // listBoxTarget
             // 
-            this.lblTarget.AutoSize = true;
-            this.lblTarget.Location = new System.Drawing.Point(73, 40);
-            this.lblTarget.Name = "lblTarget";
-            this.lblTarget.Size = new System.Drawing.Size(48, 13);
-            this.lblTarget.TabIndex = 11;
-            this.lblTarget.Text = "lblTarget";
+            this.listBoxTarget.Dock = System.Windows.Forms.DockStyle.Left;
+            this.listBoxTarget.FormattingEnabled = true;
+            this.listBoxTarget.Location = new System.Drawing.Point(0, 0);
+            this.listBoxTarget.Name = "listBoxTarget";
+            this.listBoxTarget.Size = new System.Drawing.Size(217, 212);
+            this.listBoxTarget.Sorted = true;
+            this.listBoxTarget.TabIndex = 15;
+            this.listBoxTarget.SelectedIndexChanged += new System.EventHandler(this.listBoxTarget_SelectedIndexChanged);
             // 
-            // lblText1
+            // listBoxRom
             // 
-            this.lblText1.AutoSize = true;
-            this.lblText1.Location = new System.Drawing.Point(30, 39);
-            this.lblText1.Name = "lblText1";
-            this.lblText1.Size = new System.Drawing.Size(41, 13);
-            this.lblText1.TabIndex = 12;
-            this.lblText1.Text = "Target:";
-            // 
-            // linkHelp
-            // 
-            this.linkHelp.AutoSize = true;
-            this.linkHelp.Location = new System.Drawing.Point(253, 40);
-            this.linkHelp.Name = "linkHelp";
-            this.linkHelp.Size = new System.Drawing.Size(29, 13);
-            this.linkHelp.TabIndex = 13;
-            this.linkHelp.TabStop = true;
-            this.linkHelp.Text = "Help";
-            this.linkHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkHelp_LinkClicked);
+            this.listBoxRom.Dock = System.Windows.Forms.DockStyle.Left;
+            this.listBoxRom.FormattingEnabled = true;
+            this.listBoxRom.Location = new System.Drawing.Point(217, 0);
+            this.listBoxRom.Name = "listBoxRom";
+            this.listBoxRom.Size = new System.Drawing.Size(227, 212);
+            this.listBoxRom.Sorted = true;
+            this.listBoxRom.TabIndex = 16;
+            this.listBoxRom.SelectedIndexChanged += new System.EventHandler(this.listBoxRom_SelectedIndexChanged);
             // 
             // linkWiki
             // 
             this.linkWiki.AutoSize = true;
-            this.linkWiki.Location = new System.Drawing.Point(30, 15);
+            this.linkWiki.Location = new System.Drawing.Point(539, 5);
             this.linkWiki.Name = "linkWiki";
             this.linkWiki.Size = new System.Drawing.Size(28, 13);
-            this.linkWiki.TabIndex = 14;
+            this.linkWiki.TabIndex = 17;
             this.linkWiki.TabStop = true;
             this.linkWiki.Text = "Wiki";
             this.linkWiki.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkWiki_LinkClicked);
+            // 
+            // linkHelp
+            // 
+            this.linkHelp.AutoSize = true;
+            this.linkHelp.Location = new System.Drawing.Point(539, 26);
+            this.linkHelp.Name = "linkHelp";
+            this.linkHelp.Size = new System.Drawing.Size(49, 13);
+            this.linkHelp.TabIndex = 18;
+            this.linkHelp.TabStop = true;
+            this.linkHelp.Text = "Help rom";
+            this.linkHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkHelp_LinkClicked);
+            // 
+            // linkPatches
+            // 
+            this.linkPatches.AutoSize = true;
+            this.linkPatches.Location = new System.Drawing.Point(539, 47);
+            this.linkPatches.Name = "linkPatches";
+            this.linkPatches.Size = new System.Drawing.Size(73, 13);
+            this.linkPatches.TabIndex = 19;
+            this.linkPatches.TabStop = true;
+            this.linkPatches.Text = "More Patches";
+            this.linkPatches.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPatches_LinkClicked);
             // 
             // Default
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 253);
-            this.Controls.Add(this.linkWiki);
+            this.ClientSize = new System.Drawing.Size(613, 212);
+            this.Controls.Add(this.linkPatches);
             this.Controls.Add(this.linkHelp);
-            this.Controls.Add(this.lblText1);
-            this.Controls.Add(this.lblTarget);
+            this.Controls.Add(this.linkWiki);
+            this.Controls.Add(this.listBoxRom);
+            this.Controls.Add(this.listBoxTarget);
             this.Controls.Add(this.checkVerbs);
             this.Controls.Add(this.checkDdinumber);
             this.Controls.Add(this.checkNoCross);
@@ -242,7 +229,6 @@
             this.Controls.Add(this.checkWidescreen);
             this.Controls.Add(this.checkNoResize);
             this.Controls.Add(this.BtnStart);
-            this.Controls.Add(this.CbBListGames);
             this.Name = "Default";
             this.Text = "DemulShooterLauncher";
             this.Load += new System.EventHandler(this.Default_Load);
@@ -252,8 +238,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox CbBListGames;
         private System.Windows.Forms.Button BtnStart;
         private System.Windows.Forms.CheckBox checkNoResize;
         private System.Windows.Forms.CheckBox checkWidescreen;
@@ -271,10 +255,11 @@
         private System.Windows.Forms.ToolTip TipNoCross;
         private System.Windows.Forms.ToolTip TipddNumber;
         private System.Windows.Forms.ToolTip TipVerbs;
-        private System.Windows.Forms.Label lblTarget;
-        private System.Windows.Forms.Label lblText1;
-        private System.Windows.Forms.LinkLabel linkHelp;
+        private System.Windows.Forms.ListBox listBoxTarget;
+        private System.Windows.Forms.ListBox listBoxRom;
         private System.Windows.Forms.LinkLabel linkWiki;
+        private System.Windows.Forms.LinkLabel linkHelp;
+        private System.Windows.Forms.LinkLabel linkPatches;
     }
 }
 

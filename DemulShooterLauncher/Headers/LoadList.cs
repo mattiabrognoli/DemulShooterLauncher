@@ -4,94 +4,100 @@ namespace DemulShooterLauncher.Headers
 {
     class LoadList
     {
-        //string PathXML { get; }
-
         public LoadList()
         {
         }
-
-
-        public List<Game> Loading()
+        public Dictionary<string, Target> Loading()
         {
-            List<Game> GameList = new List<Game>();
+            
+            Dictionary<string, Target> ListTarget = new Dictionary<string, Target>();
+
+            //Set key value
+            ListTarget["Demul 0.7a 180428"] = new Target("demul07a");
+            ListTarget["Cxbx-Reloaded"] = new Target("chihiro");
+            ListTarget["TeknoParrot Loader (Lindberh)"] = new Target("lindbergh");
+            ListTarget["Global VR Games"] = new Target("globalvr");            
+            ListTarget["Windows Games"] = new Target("windows");
+            ListTarget["Model2 Emulator v1.1a"] = new Target("model2");
+            ListTarget["TeknoParrot Loader (Ringwide)"] = new Target("ringwide");
+            ListTarget["Taito Type X Games"] = new Target("ttx");
+            ListTarget["TeknoParrot Loader (Sega Nu)"] = new Target("seganu");
 
             //Demul
-            GameList.Add(new Game("Brave Fire fighters", "demul07a", "braveff", "noresize"));
-            GameList.Add(new Game("Confidential Mission", "demul07a", "confmiss", "noresize"));
-            GameList.Add(new Game("Death Crimson OX", "demul07a", "deathcox", "noresize"));
-            GameList.Add(new Game("House of The Dead II (US)", "demul07a", "hotd2", "noresize"));
-            GameList.Add(new Game("House of The Dead II", "demul07a", "hotd2o", "noresize"));
-            GameList.Add(new Game("House of The Dead II (Prototype)", "demul07a", "hotd2p", "noresize"));
-            GameList.Add(new Game("Lupin The Third", "demul07a", "lupinsho", "noresize"));        
-            GameList.Add(new Game("Manic Panic Ghosts", "demul07a", "manicpnc", "noresize"));
-            GameList.Add(new Game("The Maze of the kings", "demul07a", "mok", "noresize"));
-            GameList.Add(new Game("Ninja Assault (World)", "demul07a", "ninjaslt", "noresize"));
-            GameList.Add(new Game("Ninja Assault (Asia)", "demul07a", "ninjaslta", "noresize"));
-            GameList.Add(new Game("Ninja Assault (Japan)", "demul07a", "ninjasltj", "noresize"));
-            GameList.Add(new Game("Ninja Assault (US)", "demul07a", "ninjasltu", "noresize"));
-            GameList.Add(new Game("Pokasuka Ghosts", "demul07a", "pokasuka", "noresize"));
-            GameList.Add(new Game("Ranger Mission", "demul07a", "rangrmsn", "noresize"));
-            GameList.Add(new Game("Sports Shoting USA", "demul07a", "sprtshot", "noresize"));
-            GameList.Add(new Game("Extreme Hunting", "demul07a", "xtrmhunt", "noresize"));
-            GameList.Add(new Game("Extreme Hunting 2", "demul07a", "xtrmhnt2", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("Brave Fire fighters", new Game("braveff", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("Confidential Mission", new Game("confmiss", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("Death Crimson OX", new Game("deathcox", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("House of The Dead II (US)", new Game("hotd2", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("House of The Dead II", new Game("hotd2o", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("House of The Dead II (Prototype)", new Game("hotd2p", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("Lupin The Third", new Game("lupinsho", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("Manic Panic Ghosts", new Game("manicpnc", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("The Maze of the kings", new Game("mok", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("Ninja Assault (World)", new Game("ninjaslt", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("Ninja Assault (Asia)", new Game("ninjaslta", "noresize"));           
+            ListTarget["Demul 0.7a 180428"].AddRom("Ninja Assault (Japan)", new Game("ninjasltj", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("Ninja Assault (US)", new Game("ninjasltu", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("Pokasuka Ghosts", new Game("pokasuka", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("Ranger Mission", new Game("rangrmsn", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("Sports Shoting USA", new Game("sprtshot", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("Extreme Hunting", new Game("xtrmhunt", "noresize"));
+            ListTarget["Demul 0.7a 180428"].AddRom("Extreme Hunting 2", new Game("xtrmhnt2", "noresize"));
 
             //Chihiro
-            GameList.Add(new Game("Virtual Cop 3", "chihiro", "vcop3", null));
+            ListTarget["Cxbx-Reloaded"].AddRom("Virtual Cop 3", new Game("vcop3", null));
 
-            //GlobalVR
-            GameList.Add(new Game("Aliens Extermination", "globalvr", "aliens", null));
-            GameList.Add(new Game("Fright Fear Land", "globalvr", "fearland", null));
+            //Global VR
+            ListTarget["Global VR Games"].AddRom("Aliens Extermination", new Game("aliens", null));
+            ListTarget["Global VR Games"].AddRom("Fright Fear Land", new Game("fearland", null));
 
             //Lidenbergh
-            GameList.Add(new Game("Too Spicy", "lindbergh", "2spicy", null));
-            GameList.Add(new Game("House of the dead 4", "lindbergh", "hotd4", null));
-            GameList.Add(new Game("Let's Go Jungle", "lindbergh", "lgj", null));
-            GameList.Add(new Game("Let's Go Jungle (1 player)", "lindbergh", "lgjsp", null));
-            GameList.Add(new Game("Rambo", "lindbergh", "rambo", "nocrosshair"));
+            ListTarget["TeknoParrot Loader (Lindberh)"].AddRom("Too Spicy", new Game("2spicy", null));
+            ListTarget["TeknoParrot Loader (Lindberh)"].AddRom("House of the dead 4", new Game("hotd4", null));
+            ListTarget["TeknoParrot Loader (Lindberh)"].AddRom("Let's Go Jungle", new Game("lgj", null));
+            ListTarget["TeknoParrot Loader (Lindberh)"].AddRom("Let's Go Jungle (1 player)", new Game("lgjsp", null));
+            ListTarget["TeknoParrot Loader (Lindberh)"].AddRom("Rambo", new Game("rambo", "nocrosshair"));
 
             //Windows Games
-            GameList.Add(new Game("Art Is Dead", "windows", "artdead", null));
-            GameList.Add(new Game("Heavy Fire Afghanistan", "windows", "hfa", null));
-            GameList.Add(new Game("Heavy Fire Afghanistan (Dual Player)", "windows", "hfa2p", null));
-            GameList.Add(new Game("Heavy Fire Shattered Spear", "windows", "hfss", null));
-            GameList.Add(new Game("Heavy Fire Shattered Spear (Dual Player)", "windows", "hfss2p", null));
-            GameList.Add(new Game("Reload", "windows", "reload", "nocrosshair"));
-            GameList.Add(new Game("House of The Dead II (PC)", "windows", "hod2pc", null));
-            GameList.Add(new Game("House of The Dead III", "windows", "hod3pc", "noautoreload noguns"));
-            GameList.Add(new Game("House of The Dead : Overkill", "windows", "hodo", null));
+            ListTarget["Windows Games"].AddRom("Art Is Dead", new Game("artdead", null));
+            ListTarget["Windows Games"].AddRom("Heavy Fire Afghanistan", new Game("hfa", null));
+            ListTarget["Windows Games"].AddRom("Heavy Fire Afghanistan (Dual Player)", new Game("hfa2p", null));
+            ListTarget["Windows Games"].AddRom("Heavy Fire Shattered Spear", new Game("hfss", null));
+            ListTarget["Windows Games"].AddRom("Heavy Fire Shattered Spear (Dual Player)", new Game("hfss2p", null));
+            ListTarget["Windows Games"].AddRom("Reload", new Game("reload", "nocrosshair"));
+            ListTarget["Windows Games"].AddRom("House of The Dead II (PC)", new Game("hod2pc", null));
+            ListTarget["Windows Games"].AddRom("House of The Dead III", new Game("hod3pc", "noautoreload noguns"));
+            ListTarget["Windows Games"].AddRom("House of The Dead : Overkill", new Game("hodo", null));
 
             //Model2
-            GameList.Add(new Game("Behind Enemy Lines", "model2", "bel", null));
-            GameList.Add(new Game("Gunblade NY", "model2", "gunblade", null));
-            GameList.Add(new Game("House of the Dead", "model2", "hotd", null));
-            GameList.Add(new Game("Railchase 2", "model2", "rchase2", null));
-            GameList.Add(new Game("Virtua Cop", "model2", "vcop", null));
-            GameList.Add(new Game("Virtua Cop 2", "model2", "vcop2", null));
+            ListTarget["Model2 Emulator v1.1a"].AddRom("Behind Enemy Lines", new Game("bel", null));
+            ListTarget["Model2 Emulator v1.1a"].AddRom("Gunblade NY", new Game("gunblade", null));
+            ListTarget["Model2 Emulator v1.1a"].AddRom("House of the Dead", new Game("hotd", null));
+            ListTarget["Model2 Emulator v1.1a"].AddRom("Railchase 2", new Game("rchase2", null));
+            ListTarget["Model2 Emulator v1.1a"].AddRom("Virtua Cop", new Game("vcop", null));
+            ListTarget["Model2 Emulator v1.1a"].AddRom("Virtua Cop 2", new Game("vcop2", null));
 
             //RingWide
-            GameList.Add(new Game("Let's Go Island : Lost on the Island of Tropics", "ringwide", "lgi", null));
-            GameList.Add(new Game("Let's Go Island : Lost on the Island of Tropics 3D", "ringwide", "lgi3D", null));
-            GameList.Add(new Game("Operation G.H.O.S.T.", "ringwide", "og", null));
-            GameList.Add(new Game("Sega Dream Riders", "ringwide", "sdr", null));
-            GameList.Add(new Game("Sega Golden Gun", "ringwide", "sgg", null));
-            GameList.Add(new Game("Transformers : Human Alliance", "ringwide", "tha", null));
+            ListTarget["TeknoParrot Loader (Ringwide)"].AddRom("Let's Go Island : Lost on the Island of Tropics", new Game("lgi", null));
+            ListTarget["TeknoParrot Loader (Ringwide)"].AddRom("Let's Go Island : Lost on the Island of Tropics 3D", new Game("lgi3D", null));
+            ListTarget["TeknoParrot Loader (Ringwide)"].AddRom("Operation G.H.O.S.T.", new Game("og", null));
+            ListTarget["TeknoParrot Loader (Ringwide)"].AddRom("Sega Dream Riders", new Game("sdr", null));
+            ListTarget["TeknoParrot Loader (Ringwide)"].AddRom("Sega Golden Gun", new Game("sgg", null));
+            ListTarget["TeknoParrot Loader (Ringwide)"].AddRom("Transformers : Human Alliance", new Game("tha", null));
 
             //Taito Type X
-            GameList.Add(new Game("Elevator Action Death Parade", "ttx", "eapd", null));
-            GameList.Add(new Game("Silent Hill the Arcade", "ttx", "sha", null));
-            GameList.Add(new Game("Gaia Attack 4", "ttx", "gattack4", null));
-            GameList.Add(new Game("Gundam : Spirit of Zeon", "ttx", "gsoz", null));
-            GameList.Add(new Game("Gundam : Spirit of Zeon ( DualScreen )", "ttx", "gsoz2p", null));
-            GameList.Add(new Game("Haunted Museum", "ttx", "hmuseum", null));
-            GameList.Add(new Game("Haunted Museum 2", "ttx", "hmuseum2", null));
-            GameList.Add(new Game("Music Gun Gun! 2", "ttx", "mgungun2", null));
+            ListTarget["Taito Type X Games"].AddRom("Elevator Action Death Parade", new Game("eapd", null));
+            ListTarget["Taito Type X Games"].AddRom("Silent Hill the Arcade", new Game("sha", null));
+            ListTarget["Taito Type X Games"].AddRom("Gaia Attack 4", new Game("gattack4", null));
+            ListTarget["Taito Type X Games"].AddRom("Gundam : Spirit of Zeon", new Game("gsoz", null));
+            ListTarget["Taito Type X Games"].AddRom("Gundam : Spirit of Zeon ( DualScreen )", new Game("gsoz2p", null));
+            ListTarget["Taito Type X Games"].AddRom("Haunted Museum", new Game("hmuseum", null));
+            ListTarget["Taito Type X Games"].AddRom("Haunted Museum 2", new Game("hmuseum2", null));
+            ListTarget["Taito Type X Games"].AddRom("Music Gun Gun! 2", new Game("mgungun2", null));
 
             //Seha Nu
-            GameList.Add(new Game("Luigi Mansion Arcade", "seganu", "lma", null, true));
+            ListTarget["TeknoParrot Loader (Sega Nu)"].AddRom("Luigi Mansion Arcade", new Game("lma", null, true));
 
-            GameList.Sort((p, q) => p.Name.CompareTo(q.Name));
-
-            return GameList;
+            return ListTarget;
 
         }
     }
