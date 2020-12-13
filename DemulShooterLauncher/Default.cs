@@ -5,6 +5,7 @@ using System.IO;
 using System.Security.Principal;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Linq;
 
 namespace DemulShooterLauncher
 {
@@ -12,7 +13,9 @@ namespace DemulShooterLauncher
     {
         string pathRoot;
         List<CheckBox> checkBoxes;
-        Dictionary<string, Target> ListTargets;
+        List<Machine> ListMachines;
+
+
 
         public Default()
         {
@@ -47,7 +50,7 @@ namespace DemulShooterLauncher
         {
             LoadList load = new LoadList();
             checkBoxes = new List<CheckBox>();
-            ListTargets = new Dictionary<string, Target>();
+            //ListTargets = new Dictionary<string, Target>();
 
             foreach (var control in this.Controls)
                 if (control is CheckBox)
@@ -56,14 +59,15 @@ namespace DemulShooterLauncher
                     checkBoxes.Add(tmp);
                     tmp.Enabled = false;
                 }
-
-            ListTargets = load.Loading();
+            ListMachines = load.LoadingMachines();
+            //ListGames = load.LoadingGames();
+            //ListTargets = load.Loading();
 
             listBoxTarget.BeginUpdate();
 
-            foreach (var t in ListTargets)
+            foreach (var t in ListMachines)
             {
-                listBoxTarget.Items.Add(t.Key);
+                listBoxTarget.Items.Add(t.ToString());
             }
 
             listBoxTarget.EndUpdate();
@@ -73,11 +77,10 @@ namespace DemulShooterLauncher
         {
             string arguments = getArguments();
             StartCommand start = new StartCommand();
-            if(listBoxRom.SelectedIndex == -1)
+            if (listBoxRom.SelectedIndex == -1)
                 MessageBox.Show("Unexpected Error");
             else
-                start.Run(pathRoot, ListTargets[listBoxTarget.SelectedItem.ToString()].ListRom[listBoxRom.SelectedItem.ToString()], ListTargets[listBoxTarget.SelectedItem.ToString()].Name, arguments);
-               
+                start.Run(pathRoot, ListMachines.Where(t => t.Name == listBoxTarget.SelectedItem.ToString()).Select(m => m.Games).Single().Find(g => g.Name == listBoxRom.SelectedItem.ToString()), ListMachines.Find(m => m.Name == listBoxTarget.SelectedItem.ToString()).Target, arguments);
         }
 
         private string getArguments()
@@ -104,10 +107,12 @@ namespace DemulShooterLauncher
         {
             listBoxRom.BeginUpdate();
             listBoxRom.Items.Clear();
-            foreach (var g in ListTargets[listBoxTarget.SelectedItem.ToString()].ListRom)
-            {
-                listBoxRom.Items.Add(g.Key);
-            }
+            //foreach (var g in ListTargets[listBoxTarget.SelectedItem.ToString()].ListRom)
+            //foreach (var g in ListMachines.Where(t => t.Name == listBoxTarget.SelectedItem.ToString()).Select(m => m.Games).ToList())// == listBoxTarget.SelectedItem.ToString()).ToList())
+            //{
+                foreach (var q in ListMachines.Where(t => t.Name == listBoxTarget.SelectedItem.ToString()).Select(m => m.Games).Single())
+                    listBoxRom.Items.Add(q.ToString());
+            //}
             listBoxRom.EndUpdate();
 
             if (listBoxRom.Items.Count > 0)
@@ -119,7 +124,8 @@ namespace DemulShooterLauncher
         private void listBoxRom_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (var control in checkBoxes)
-                if (ListTargets[listBoxTarget.SelectedItem.ToString()].ListRom[listBoxRom.SelectedItem.ToString()].Recommended.Contains(UoW.TextToArgument(control.Text)))
+                //if (ListTargets[listBoxTarget.SelectedItem.ToString()].ListRom[listBoxRom.SelectedItem.ToString()].Recommended.Contains(UoW.TextToArgument(control.Text)))
+                if (ListMachines.Where(t => t.Name == listBoxTarget.SelectedItem.ToString()).Select(m => m.Games).Single().Find(g => g.Name == listBoxRom.SelectedItem.ToString()).Recommended.Contains(UoW.TextToArgument(control.Text)))
                 {
                     control.Enabled = true;
                     control.Checked = true;
@@ -141,8 +147,8 @@ namespace DemulShooterLauncher
 
         private void linkHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (listBoxTarget.SelectedIndex >= 0)
-                using (Process.Start(UoW.GetLink(ListTargets[listBoxTarget.SelectedItem.ToString()].Name))) { }
+           if (listBoxTarget.SelectedIndex >= 0)
+            using (Process.Start(UoW.GetLink(ListMachines.Find(m => m.Name == listBoxTarget.SelectedItem.ToString()).Target))) { }
         }
 
         private void linkPatches_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -80,5 +80,7 @@ namespace DemulShooterLauncher.Headers
 
             return false;
         }
+
+        //TODO aggiungere metodo per restituire query
     }
 }

@@ -2,23 +2,23 @@
 {
     public class Game
     {
+        public string Name { get; }
         public string Rom { get; }
-        public string Starter { get; }
         public string Recommended { get; }
+        public string Starter { get; }
 
-        public Game(string rom, string recommended)
+        public Game(string name, string rom, string target, string recommended, bool starter)
         {
-            Rom = rom;
-            Starter = "DemulShooter.exe";
-            Recommended = recommended == null ? string.Empty : recommended;
+            this.Name = name;
+            this.Rom = rom;
+            this.Starter = "DemulShooter.exe";
+            this.Recommended = recommended == null ? string.Empty : recommended;
+            this.Starter = starter == true ? "DemulShooterX64.exe" : "DemulShooter.exe";
         }
 
-        public Game(string rom, string recommended, bool starter)
+        public override string ToString()
         {
-            Rom = rom;
-            Starter = starter == true ? "DemulShooterX64.exe" : "DemulShooter.exe";
-            Recommended = recommended == null ? string.Empty : recommended;
-
+            return Name;
         }
     }
 }

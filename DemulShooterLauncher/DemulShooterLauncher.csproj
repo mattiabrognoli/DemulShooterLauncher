@@ -70,7 +70,7 @@
     <Compile Include="Headers\Game.cs" />
     <Compile Include="Headers\LoadList.cs" />
     <Compile Include="Headers\StartCommand.cs" />
-    <Compile Include="Headers\Target.cs" />
+    <Compile Include="Headers\Machine.cs" />
     <Compile Include="Headers\UoW.cs" />
     <Compile Include="main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
