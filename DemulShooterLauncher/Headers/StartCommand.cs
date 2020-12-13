@@ -22,13 +22,15 @@ namespace DemulShooterLauncher.Headers
             {
                 using (StreamWriter sw = p.StandardInput)
                 {
-                   string inputText = rootPath + "\\" + current.Starter + " -target=" + target + " -rom=" + current.Rom + arguments;
-                   sw.WriteLine(inputText);
-                   sw.Close();
+                    string inputText = rootPath + "\\" + current.Starter + " -target=" + target + " -rom=" + current.Rom + arguments;
+                    sw.WriteLine(inputText);
+                    sw.Close();
                 }
                 p.WaitForExit();
             }
         }
+
+        //TODO creare metodo per comando dolphin
 
     }
 }

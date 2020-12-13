@@ -8,7 +8,7 @@ namespace DemulShooterLauncher.Headers
 {
     public class Machine
     {
-        public string Name { get;}
+        public string Name { get; }
         public string Target { get; }
         public List<Game> Games { get; }
 

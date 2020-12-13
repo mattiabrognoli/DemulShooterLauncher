@@ -67,11 +67,11 @@
     <Compile Include="Default.Designer.cs">
       <DependentUpon>Default.cs</DependentUpon>
     </Compile>
-    <Compile Include="Headers\Game.cs" />
+    <Compile Include="Objects\Game.cs" />
     <Compile Include="Headers\LoadList.cs" />
     <Compile Include="Headers\StartCommand.cs" />
-    <Compile Include="Headers\Machine.cs" />
-    <Compile Include="Headers\UoW.cs" />
+    <Compile Include="Objects\Machine.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Default.resx">

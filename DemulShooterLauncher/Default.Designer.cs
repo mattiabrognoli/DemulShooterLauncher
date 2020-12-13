@@ -55,7 +55,7 @@
             // 
             // BtnStart
             // 
-            this.BtnStart.Location = new System.Drawing.Point(447, 184);
+            this.BtnStart.Location = new System.Drawing.Point(457, 184);
             this.BtnStart.Name = "BtnStart";
             this.BtnStart.Size = new System.Drawing.Size(69, 23);
             this.BtnStart.TabIndex = 2;
@@ -67,7 +67,7 @@
             // 
             this.checkNoResize.AccessibleDescription = "";
             this.checkNoResize.AutoSize = true;
-            this.checkNoResize.Location = new System.Drawing.Point(450, 46);
+            this.checkNoResize.Location = new System.Drawing.Point(460, 46);
             this.checkNoResize.Name = "checkNoResize";
             this.checkNoResize.Size = new System.Drawing.Size(70, 17);
             this.checkNoResize.TabIndex = 3;
@@ -79,7 +79,7 @@
             // checkWidescreen
             // 
             this.checkWidescreen.AutoSize = true;
-            this.checkWidescreen.Location = new System.Drawing.Point(450, 4);
+            this.checkWidescreen.Location = new System.Drawing.Point(460, 4);
             this.checkWidescreen.Name = "checkWidescreen";
             this.checkWidescreen.Size = new System.Drawing.Size(83, 17);
             this.checkWidescreen.TabIndex = 4;
@@ -90,7 +90,7 @@
             // checkNoReload
             // 
             this.checkNoReload.AutoSize = true;
-            this.checkNoReload.Location = new System.Drawing.Point(450, 92);
+            this.checkNoReload.Location = new System.Drawing.Point(460, 92);
             this.checkNoReload.Name = "checkNoReload";
             this.checkNoReload.Size = new System.Drawing.Size(93, 17);
             this.checkNoReload.TabIndex = 5;
@@ -101,7 +101,7 @@
             // checkNoFire
             // 
             this.checkNoFire.AutoSize = true;
-            this.checkNoFire.Location = new System.Drawing.Point(450, 25);
+            this.checkNoFire.Location = new System.Drawing.Point(460, 25);
             this.checkNoFire.Name = "checkNoFire";
             this.checkNoFire.Size = new System.Drawing.Size(78, 17);
             this.checkNoFire.TabIndex = 6;
@@ -112,7 +112,7 @@
             // checkNoGuns
             // 
             this.checkNoGuns.AutoSize = true;
-            this.checkNoGuns.Location = new System.Drawing.Point(450, 69);
+            this.checkNoGuns.Location = new System.Drawing.Point(460, 69);
             this.checkNoGuns.Name = "checkNoGuns";
             this.checkNoGuns.Size = new System.Drawing.Size(66, 17);
             this.checkNoGuns.TabIndex = 7;
@@ -123,7 +123,7 @@
             // checkNoCross
             // 
             this.checkNoCross.AutoSize = true;
-            this.checkNoCross.Location = new System.Drawing.Point(450, 115);
+            this.checkNoCross.Location = new System.Drawing.Point(460, 115);
             this.checkNoCross.Name = "checkNoCross";
             this.checkNoCross.Size = new System.Drawing.Size(86, 17);
             this.checkNoCross.TabIndex = 8;
@@ -135,7 +135,7 @@
             // 
             this.checkDdinumber.AutoSize = true;
             this.checkDdinumber.Enabled = false;
-            this.checkDdinumber.Location = new System.Drawing.Point(450, 138);
+            this.checkDdinumber.Location = new System.Drawing.Point(460, 138);
             this.checkDdinumber.Name = "checkDdinumber";
             this.checkDdinumber.Size = new System.Drawing.Size(83, 17);
             this.checkDdinumber.TabIndex = 9;
@@ -147,7 +147,7 @@
             // 
             this.checkVerbs.AutoSize = true;
             this.checkVerbs.Enabled = false;
-            this.checkVerbs.Location = new System.Drawing.Point(450, 161);
+            this.checkVerbs.Location = new System.Drawing.Point(460, 161);
             this.checkVerbs.Name = "checkVerbs";
             this.checkVerbs.Size = new System.Drawing.Size(53, 17);
             this.checkVerbs.TabIndex = 10;
@@ -172,7 +172,7 @@
             this.listBoxRom.FormattingEnabled = true;
             this.listBoxRom.Location = new System.Drawing.Point(217, 0);
             this.listBoxRom.Name = "listBoxRom";
-            this.listBoxRom.Size = new System.Drawing.Size(227, 212);
+            this.listBoxRom.Size = new System.Drawing.Size(237, 212);
             this.listBoxRom.Sorted = true;
             this.listBoxRom.TabIndex = 16;
             this.listBoxRom.SelectedIndexChanged += new System.EventHandler(this.listBoxRom_SelectedIndexChanged);
@@ -180,7 +180,7 @@
             // linkWiki
             // 
             this.linkWiki.AutoSize = true;
-            this.linkWiki.Location = new System.Drawing.Point(539, 5);
+            this.linkWiki.Location = new System.Drawing.Point(549, 5);
             this.linkWiki.Name = "linkWiki";
             this.linkWiki.Size = new System.Drawing.Size(28, 13);
             this.linkWiki.TabIndex = 17;
@@ -191,7 +191,7 @@
             // linkHelp
             // 
             this.linkHelp.AutoSize = true;
-            this.linkHelp.Location = new System.Drawing.Point(539, 26);
+            this.linkHelp.Location = new System.Drawing.Point(549, 26);
             this.linkHelp.Name = "linkHelp";
             this.linkHelp.Size = new System.Drawing.Size(49, 13);
             this.linkHelp.TabIndex = 18;
@@ -202,7 +202,7 @@
             // linkPatches
             // 
             this.linkPatches.AutoSize = true;
-            this.linkPatches.Location = new System.Drawing.Point(539, 47);
+            this.linkPatches.Location = new System.Drawing.Point(549, 47);
             this.linkPatches.Name = "linkPatches";
             this.linkPatches.Size = new System.Drawing.Size(73, 13);
             this.linkPatches.TabIndex = 19;
@@ -214,7 +214,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(613, 212);
+            this.ClientSize = new System.Drawing.Size(622, 212);
             this.Controls.Add(this.linkPatches);
             this.Controls.Add(this.linkHelp);
             this.Controls.Add(this.linkWiki);
