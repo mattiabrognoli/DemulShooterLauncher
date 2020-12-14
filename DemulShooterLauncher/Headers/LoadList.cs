@@ -110,9 +110,9 @@ namespace DemulShooterLauncher.Headers
                 {
                     new Game("1 -> KeyboardMouse", "1", null, false),
                     new Game("2 -> Aimtrak #1", "2", null, false),
-                    new Game("3 -> Aimtrak #2", "3", null, false)
+                    new Game("3 -> Aimtrak #2", "3", null, false),
+                    new Game("4 -> Other", "4", null, false)
                 })
-
             };
             return ListMachine;
         }
