@@ -22,13 +22,16 @@ namespace DemulShooterLauncher.Headers
             {
                 using (StreamWriter sw = p.StandardInput)
                 {
-                   string inputText = rootPath + "\\" + current.Starter + " -target=" + target + " -rom=" + current.Rom + arguments;
-                   sw.WriteLine(inputText);
-                   sw.Close();
+                    string inputText;
+                    if (target == "dolphin5")
+                        inputText = rootPath + "\\" + current.Starter + " -target=" + target + " -ddinumber=" + current.Rom;
+                    else
+                        inputText = rootPath + "\\" + current.Starter + " -target=" + target + " -rom=" + current.Rom + arguments;
+                    sw.WriteLine(inputText);
+                    sw.Close();
                 }
                 p.WaitForExit();
             }
         }
-
     }
 }

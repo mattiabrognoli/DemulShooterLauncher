@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Security.Principal;
 
 namespace DemulShooterLauncher.Headers
 {
-    public static class UoW
+    public static class Utility
     {
         static public bool checkPaths()
         {
@@ -63,7 +64,7 @@ namespace DemulShooterLauncher.Headers
             return string.Empty;
         }
 
-        static public bool CanDisableArgument (string text)
+        static public bool CanDisableArgument(string text)
         {
             if (text == "No resize")
                 return true;
@@ -79,6 +80,11 @@ namespace DemulShooterLauncher.Headers
                 return true;
 
             return false;
+        }
+
+        static public List<Game> QueryGame(List<Machine> machines, string name)
+        {
+            return machines.Where(t => t.Name == name).Select(m => m.Games).Single();
         }
     }
 }
