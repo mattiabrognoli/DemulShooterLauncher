@@ -84,7 +84,7 @@ namespace DemulShooterLauncher.Headers
 
         static public List<Game> QueryGame(List<Machine> machines, string name)
         {
-            return machines.Where(t => t.Name == name).Select(m => m.Games).Single();
+            return machines.Where(t => t.Name == name).Select(m => m.Games).SingleOrDefault();
         }
     }
 }

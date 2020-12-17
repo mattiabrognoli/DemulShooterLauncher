@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Security.Principal;
 using System.Windows.Forms;
 
@@ -87,20 +88,16 @@ namespace DemulShooterLauncher
 
         private void disableAllCheckBox()
         {
-            foreach (var control in checkBoxes)
-            {
-                control.Checked = false;
-                control.Enabled = false;
-            }
+            checkBoxes
+                .ForEach(control => { control.Checked = false; control.Enabled = false; });
         }
 
         private void listBoxTarget_SelectedIndexChanged(object sender, EventArgs e)
         {
             listBoxRom.BeginUpdate();
             listBoxRom.Items.Clear();
-            foreach (var q in Utility.QueryGame(ListMachines, listBoxTarget.SelectedItem.ToString()))
-                listBoxRom.Items.Add(q.ToString());
 
+            Utility.QueryGame(ListMachines, listBoxTarget.SelectedItem.ToString()).ForEach(q => listBoxRom.Items.Add(q.ToString()));
             listBoxRom.EndUpdate();
 
             if (listBoxRom.Items.Count > 0)
@@ -109,27 +106,32 @@ namespace DemulShooterLauncher
                 disableAllCheckBox();
         }
 
+        //TODO Valutare una soluzione migliore con linq
         private void listBoxRom_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxTarget.SelectedItem.ToString() == "Dolphin x64 v5.0")
                 disableAllCheckBox();
             else
             {
-                foreach (var control in checkBoxes)
-                    if (Utility.QueryGame(ListMachines, listBoxTarget.SelectedItem.ToString()).Find(g => g.Name == listBoxRom.SelectedItem.ToString()).Recommended.Contains(Utility.TextToArgument(control.Text)))
+                checkBoxes
+                    .ForEach(control =>
                     {
-                        control.Enabled = true;
-                        control.Checked = true;
-                    }
-                    else
-                    {
-                        if (Utility.CanDisableArgument(control.Text))
-                            control.Enabled = false;
-                        else
+                        if (Utility.QueryGame(ListMachines, listBoxTarget.SelectedItem.ToString()).Find(g => g.Name == listBoxRom.SelectedItem.ToString()).Recommended.Contains(Utility.TextToArgument(control.Text)))
+                        {
                             control.Enabled = true;
-                        control.Checked = false;
-                    }
+                            control.Checked = true;
+                        }
+                        else
+                        {
+                            if (Utility.CanDisableArgument(control.Text))
+                                control.Enabled = false;
+                            else
+                                control.Enabled = true;
+                            control.Checked = false;
+                        }
+                    });
             }
+
         }
 
         private void linkWiki_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
