@@ -67,6 +67,7 @@
             // 
             this.checkNoResize.AccessibleDescription = "";
             this.checkNoResize.AutoSize = true;
+            this.checkNoResize.Enabled = false;
             this.checkNoResize.Location = new System.Drawing.Point(460, 46);
             this.checkNoResize.Name = "checkNoResize";
             this.checkNoResize.Size = new System.Drawing.Size(70, 17);
@@ -79,6 +80,7 @@
             // checkWidescreen
             // 
             this.checkWidescreen.AutoSize = true;
+            this.checkWidescreen.Enabled = false;
             this.checkWidescreen.Location = new System.Drawing.Point(460, 4);
             this.checkWidescreen.Name = "checkWidescreen";
             this.checkWidescreen.Size = new System.Drawing.Size(83, 17);
@@ -90,6 +92,7 @@
             // checkNoReload
             // 
             this.checkNoReload.AutoSize = true;
+            this.checkNoReload.Enabled = false;
             this.checkNoReload.Location = new System.Drawing.Point(460, 92);
             this.checkNoReload.Name = "checkNoReload";
             this.checkNoReload.Size = new System.Drawing.Size(93, 17);
@@ -101,6 +104,7 @@
             // checkNoFire
             // 
             this.checkNoFire.AutoSize = true;
+            this.checkNoFire.Enabled = false;
             this.checkNoFire.Location = new System.Drawing.Point(460, 25);
             this.checkNoFire.Name = "checkNoFire";
             this.checkNoFire.Size = new System.Drawing.Size(78, 17);
@@ -112,6 +116,7 @@
             // checkNoGuns
             // 
             this.checkNoGuns.AutoSize = true;
+            this.checkNoGuns.Enabled = false;
             this.checkNoGuns.Location = new System.Drawing.Point(460, 69);
             this.checkNoGuns.Name = "checkNoGuns";
             this.checkNoGuns.Size = new System.Drawing.Size(66, 17);
@@ -123,6 +128,7 @@
             // checkNoCross
             // 
             this.checkNoCross.AutoSize = true;
+            this.checkNoCross.Enabled = false;
             this.checkNoCross.Location = new System.Drawing.Point(460, 115);
             this.checkNoCross.Name = "checkNoCross";
             this.checkNoCross.Size = new System.Drawing.Size(86, 17);

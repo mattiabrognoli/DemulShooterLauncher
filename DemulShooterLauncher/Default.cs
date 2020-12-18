@@ -46,23 +46,29 @@ namespace DemulShooterLauncher
         private void Default_Load(object sender, EventArgs e)
         {
             LoadList load = new LoadList();
-            checkBoxes = new List<CheckBox>();
-
-            foreach (var control in this.Controls)
-                if (control is CheckBox)
-                {
-                    var tmp = (CheckBox)control;
-                    checkBoxes.Add(tmp);
-                    tmp.Enabled = false;
-                }
+            checkBoxes = GetCheckBox();
             ListMachines = load.LoadingMachines();
-
+            
             listBoxTarget.BeginUpdate();
-
-            foreach (var t in ListMachines)
-                listBoxTarget.Items.Add(t.ToString());
-
+            ListMachines.ForEach(m => listBoxTarget.Items.Add(m.ToString()));
             listBoxTarget.EndUpdate();
+        }
+
+        private List<CheckBox> GetCheckBox()
+        {
+            List<CheckBox> list = new List<CheckBox>();
+
+            list.Add(checkWidescreen);
+            list.Add(checkNoFire);
+            list.Add(checkNoResize);
+            list.Add(checkNoGuns);
+            list.Add(checkNoReload);
+            list.Add(checkNoCross);
+            list.Add(checkDdinumber);
+            list.Add(checkVerbs);
+
+
+            return list;
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
