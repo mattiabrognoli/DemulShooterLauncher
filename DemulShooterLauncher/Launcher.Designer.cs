@@ -1,6 +1,6 @@
 ﻿namespace DemulShooterLauncher
 {
-    partial class Default
+    partial class Launcher
     {
         /// <summary>
         /// Variabile di progettazione necessaria.

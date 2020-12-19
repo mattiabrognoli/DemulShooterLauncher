@@ -61,21 +61,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.cs">
+    <Compile Include="Controller\LauncherController.cs" />
+    <Compile Include="Controller\LauncherControllerHelper.cs" />
+    <Compile Include="Launcher.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Default.Designer.cs">
-      <DependentUpon>Default.cs</DependentUpon>
+    <Compile Include="Launcher.Designer.cs">
+      <DependentUpon>Launcher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\MachineSummary.cs" />
     <Compile Include="Objects\Game.cs" />
-    <Compile Include="Headers\LoadList.cs" />
-    <Compile Include="Headers\StartCommand.cs" />
     <Compile Include="Objects\Machine.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Default.resx">
-      <DependentUpon>Default.cs</DependentUpon>
+    <EmbeddedResource Include="Launcher.resx">
+      <DependentUpon>Launcher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,4 +1,5 @@
-﻿using DemulShooterLauncher.Headers;
+﻿using DemulShooterLauncher.Controller;
+using DemulShooterLauncher.Headers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,17 +10,15 @@ using System.Windows.Forms;
 
 namespace DemulShooterLauncher
 {
-    public partial class Default : Form
+    public partial class Launcher : Form
     {
         string pathRoot;
         List<CheckBox> checkBoxes;
-        List<Machine> ListMachines;
-
-        public Default()
+        LauncherController launcherController;
+        public Launcher()
         {
             FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            pathRoot = Directory.GetCurrentDirectory();
             bool exit = false;
             string error = string.Empty;
             if (!Utility.checkPaths())
@@ -27,37 +26,31 @@ namespace DemulShooterLauncher
                 error += "Insert launcher in DemulShooter Folder\n";
                 exit = true;
             }
-
             if (!Utility.checkAdmin(new WindowsPrincipal(WindowsIdentity.GetCurrent())))
             {
                 error += "Start with administrator\n";
                 exit = true;
             }
-
             if (exit)
             {
                 MessageBox.Show("Error!\n" + error);
-                System.Environment.Exit(-1);
+                Environment.Exit(-1);
             }
-
             InitializeComponent();
         }
-
         private void Default_Load(object sender, EventArgs e)
         {
-            LoadList load = new LoadList();
-            checkBoxes = GetCheckBox();
-            ListMachines = load.LoadingMachines();
-            
+            pathRoot = Directory.GetCurrentDirectory();
+            launcherController = new LauncherController();
+            launcherController.LoadModel();
+            checkBoxes = LoadCheckBox();
             listBoxTarget.BeginUpdate();
-            ListMachines.ForEach(m => listBoxTarget.Items.Add(m.ToString()));
+            launcherController.GetListMachines().ToList().ForEach(m => listBoxTarget.Items.Add(m.ToString()));
             listBoxTarget.EndUpdate();
         }
-
-        private List<CheckBox> GetCheckBox()
+        private List<CheckBox> LoadCheckBox()
         {
             List<CheckBox> list = new List<CheckBox>();
-
             list.Add(checkWidescreen);
             list.Add(checkNoFire);
             list.Add(checkNoResize);
@@ -66,53 +59,40 @@ namespace DemulShooterLauncher
             list.Add(checkNoCross);
             list.Add(checkDdinumber);
             list.Add(checkVerbs);
-
-
             return list;
         }
-
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            string arguments = getArguments();
-            StartCommand start = new StartCommand();
             if (listBoxRom.SelectedIndex == -1)
                 MessageBox.Show("Unexpected Error");
             else
-                start.Run(pathRoot, Utility.QueryGame(ListMachines, listBoxTarget.SelectedItem.ToString()).Find(g => g.Name == listBoxRom.SelectedItem.ToString()), ListMachines.Find(m => m.Name == listBoxTarget.SelectedItem.ToString()).Target, arguments);
+                launcherController.StartCommand(listBoxTarget.SelectedItem.ToString(), listBoxRom.SelectedItem.ToString(), getArguments(), pathRoot);
         }
-
         private string getArguments()
         {
             string args = string.Empty;
-
             foreach (var control in checkBoxes)
                 if (control.Checked)
                     args += " -" + Utility.TextToArgument(control.Text);
-
             return args;
         }
-
         private void disableAllCheckBox()
         {
             checkBoxes
                 .ForEach(control => { control.Checked = false; control.Enabled = false; });
         }
-
         private void listBoxTarget_SelectedIndexChanged(object sender, EventArgs e)
         {
             listBoxRom.BeginUpdate();
             listBoxRom.Items.Clear();
-
-            Utility.QueryGame(ListMachines, listBoxTarget.SelectedItem.ToString()).ForEach(q => listBoxRom.Items.Add(q.ToString()));
+            string d = listBoxTarget.SelectedIndex.ToString();
+            launcherController.GetListGamesFromMachineName(listBoxTarget.SelectedItem.ToString()).ToList().ForEach(g => listBoxRom.Items.Add(g.ToString()));
             listBoxRom.EndUpdate();
-
             if (listBoxRom.Items.Count > 0)
                 listBoxRom.SelectedIndex = 0;
             else
                 disableAllCheckBox();
         }
-
-        //TODO Valutare una soluzione migliore con linq
         private void listBoxRom_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxTarget.SelectedItem.ToString() == "Dolphin x64 v5.0")
@@ -122,7 +102,7 @@ namespace DemulShooterLauncher
                 checkBoxes
                     .ForEach(control =>
                     {
-                        if (Utility.QueryGame(ListMachines, listBoxTarget.SelectedItem.ToString()).Find(g => g.Name == listBoxRom.SelectedItem.ToString()).Recommended.Contains(Utility.TextToArgument(control.Text)))
+                        if (launcherController.GetListGamesFromMachineName(listBoxTarget.SelectedItem.ToString()).ToList().Find(g => g.Name == listBoxRom.SelectedItem.ToString()).Recommended.Contains(Utility.TextToArgument(control.Text)))
                         {
                             control.Enabled = true;
                             control.Checked = true;
@@ -137,20 +117,16 @@ namespace DemulShooterLauncher
                         }
                     });
             }
-
         }
-
         private void linkWiki_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             using (Process.Start("https://github.com/argonlefou/DemulShooter/wiki")) { }
         }
-
         private void linkHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (listBoxTarget.SelectedIndex >= 0)
-                using (Process.Start(Utility.GetLink(ListMachines.Find(m => m.Name == listBoxTarget.SelectedItem.ToString()).Target))) { }
+                using (Process.Start(Utility.GetLink(launcherController.GetListMachines().ToList().Find(m => m.Name == listBoxTarget.SelectedItem.ToString()).Target))) { }
         }
-
         private void linkPatches_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             using (Process.Start("http://forum.arcadecontrols.com/index.php/topic,149714.0.html")) { }
