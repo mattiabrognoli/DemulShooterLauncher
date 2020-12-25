@@ -2,7 +2,6 @@
 using DemulShooterLauncher.Headers;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Principal;
@@ -102,7 +101,7 @@ namespace DemulShooterLauncher
                 checkBoxes
                     .ForEach(control =>
                     {
-                        if (launcherController.GetListGamesFromMachineName(listBoxTarget.SelectedItem.ToString()).ToList().Find(g => g.Name == listBoxRom.SelectedItem.ToString()).Recommended.Contains(Utility.TextToArgument(control.Text)))
+                        if (launcherController.CheckControl(listBoxTarget.SelectedItem.ToString(), listBoxRom.SelectedItem.ToString(), control.Text))
                         {
                             control.Enabled = true;
                             control.Checked = true;
@@ -120,16 +119,15 @@ namespace DemulShooterLauncher
         }
         private void linkWiki_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            using (Process.Start("https://github.com/argonlefou/DemulShooter/wiki")) { }
+            launcherController.StartLink("https://github.com/argonlefou/DemulShooter/wiki");
         }
         private void linkHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (listBoxTarget.SelectedIndex >= 0)
-                using (Process.Start(Utility.GetLink(launcherController.GetListMachines().ToList().Find(m => m.Name == listBoxTarget.SelectedItem.ToString()).Target))) { }
+            launcherController.StartLink(Utility.GetLink(launcherController.GetTargetInListMachines(listBoxTarget.SelectedItem.ToString())));
         }
         private void linkPatches_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            using (Process.Start("http://forum.arcadecontrols.com/index.php/topic,149714.0.html")) { }
+            launcherController.StartLink("http://forum.arcadecontrols.com/index.php/topic,149714.0.html");
         }
     }
 }

@@ -25,6 +25,10 @@ namespace DemulShooterLauncher.Controller
         {
             return machines.Where(t => t.Name == name).Select(m => m.Target).SingleOrDefault();
         }
+        static public Game FindGameInGamesbyName(Game[] games, string name)
+        {
+            return games.Where(g => g.Name == name).SingleOrDefault();
+        }
         static public void Run(string rootPath, Game current, string target, string arguments)
         {
             ProcessStartInfo myProcessInfo = new ProcessStartInfo();
