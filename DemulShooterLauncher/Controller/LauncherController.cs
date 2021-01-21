@@ -7,40 +7,40 @@ namespace DemulShooterLauncher.Controller
 {
     class LauncherController
     {
-        MachineSummary machineSummary;
+        MachineSummary _machineSummary;
         public LauncherController()
         {
-            machineSummary = new MachineSummary();
+            _machineSummary = new MachineSummary();
         }
 
         public void LoadModel()
         {
-            machineSummary.Machines = LauncherControllerHelper.LoadingMachines().ToArray();
+            _machineSummary.Machines = LauncherControllerHelper.LoadingMachines().ToArray();
         }
 
         public Machine[] GetListMachines()
         {
-            return machineSummary.Machines;
+            return _machineSummary.Machines;
         }
 
         public void StartCommand(string machineName, string gameName, string arguments, string path = ".\\")
         {
-            LauncherControllerHelper.Run(path, LauncherControllerHelper.FindGameInGamesbyName(LauncherControllerHelper.FindGamesbyName(machineSummary.Machines, machineName), gameName), LauncherControllerHelper.FindTargetbyName(machineSummary.Machines, machineName), arguments);
+            LauncherControllerHelper.Run(path, LauncherControllerHelper.FindGameInGamesbyName(LauncherControllerHelper.FindGamesbyName(_machineSummary.Machines, machineName), gameName), LauncherControllerHelper.FindTargetbyName(_machineSummary.Machines, machineName), arguments);
         }
 
         public Game[] GetListGamesFromMachineName(string machineName)
         {
-            return LauncherControllerHelper.FindGamesbyName(machineSummary.Machines, machineName);
+            return LauncherControllerHelper.FindGamesbyName(_machineSummary.Machines, machineName);
         }
 
         public Game GetGameFromGameName(string machineName, string gameName)
         {
-            return LauncherControllerHelper.FindGameInGamesbyName(LauncherControllerHelper.FindGamesbyName(machineSummary.Machines, machineName), gameName);
+            return LauncherControllerHelper.FindGameInGamesbyName(LauncherControllerHelper.FindGamesbyName(_machineSummary.Machines, machineName), gameName);
         }
 
         public string GetTargetInListMachines(string machineName)
         {
-            return LauncherControllerHelper.FindTargetbyName(machineSummary.Machines, machineName);
+            return LauncherControllerHelper.FindTargetbyName(_machineSummary.Machines, machineName);
         }
 
         public bool CheckControl(string machineName, string gameName, string controlText)
@@ -53,6 +53,4 @@ namespace DemulShooterLauncher.Controller
             using (Process.Start(link)) { }
         }
     }
-
-
 }
