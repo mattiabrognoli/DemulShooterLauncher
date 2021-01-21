@@ -1,16 +1,59 @@
-﻿using System.Collections.Generic;
+﻿using DemulShooterLauncher.Headers;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 
-namespace DemulShooterLauncher.Headers
+namespace DemulShooterLauncher.Controller
 {
-    class LoadList
+    public static class LauncherControllerHelper
     {
-        public LoadList()
+        static public Machine FindMachineByTarget(Machine[] machines, string target)
         {
+            return machines.Where(m => m.Target == target).FirstOrDefault();
         }
-        public List<Machine> LoadingMachines()
+        static public Game[] FindGamesbyName(Machine[] machines, string name)
         {
-
-            List<Machine> ListMachine = new List<Machine>()
+            return machines.Where(t => t.Name == name).Select(m => m.Games).SingleOrDefault().ToArray();
+        }
+        static public Game[] FindGamesbyTarget(Machine[] machines, string target)
+        {
+            return machines.Where(t => t.Target == target).Select(m => m.Games).SingleOrDefault().ToArray();
+        }
+        static public string FindTargetbyName(Machine[] machines, string name)
+        {
+            return machines.Where(t => t.Name == name).Select(m => m.Target).SingleOrDefault();
+        }
+        static public Game FindGameInGamesbyName(Game[] games, string name)
+        {
+            return games.Where(g => g.Name == name).SingleOrDefault();
+        }
+        static public void Run(string rootPath, Game current, string target, string arguments)
+        {
+            ProcessStartInfo myProcessInfo = new ProcessStartInfo();
+            myProcessInfo.FileName = Environment.ExpandEnvironmentVariables("%SystemRoot%") + "\\System32\\cmd.exe";
+            myProcessInfo.Verb = "runas";
+            myProcessInfo.RedirectStandardInput = true;
+            myProcessInfo.UseShellExecute = false;
+            using (Process p = Process.Start(myProcessInfo))
+            {
+                using (StreamWriter sw = p.StandardInput)
+                {
+                    string inputText;
+                    if (target == "dolphin5")
+                        inputText = rootPath + "\\" + current.Starter + " -target=" + target + " -ddinumber=" + current.Rom;
+                    else
+                        inputText = rootPath + "\\" + current.Starter + " -target=" + target + " -rom=" + current.Rom + arguments;
+                    sw.WriteLine(inputText);
+                    sw.Close();
+                }
+                p.WaitForExit();
+            }
+        }
+        static public List<Machine> LoadingMachines()
+        {
+            return new List<Machine>()
             {
                 //Demul
                 new Machine("Demul 0.7a 180428", "demul07a", new List<Game>()
@@ -114,7 +157,6 @@ namespace DemulShooterLauncher.Headers
                     new Game("4 -> Other", "4", null, false)
                 })
             };
-            return ListMachine;
         }
     }
 }
