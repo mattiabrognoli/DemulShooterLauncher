@@ -69,14 +69,16 @@
     <Compile Include="Launcher.Designer.cs">
       <DependentUpon>Launcher.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\MachineSummary.cs" />
-    <Compile Include="Objects\Game.cs" />
-    <Compile Include="Objects\Machine.cs" />
+    <Compile Include="Model\LauncherModel.cs" />
+    <Compile Include="Objects\DisplayMember.cs" />
+    <Compile Include="Objects\Rom.cs" />
+    <Compile Include="Objects\Target.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Launcher.resx">
       <DependentUpon>Launcher.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

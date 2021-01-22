@@ -182,6 +182,7 @@
             this.listBoxRom.Sorted = true;
             this.listBoxRom.TabIndex = 16;
             this.listBoxRom.SelectedIndexChanged += new System.EventHandler(this.listBoxRom_SelectedIndexChanged);
+            this.listBoxRom.DoubleClick += new System.EventHandler(this.BtnStart_Click);
             // 
             // linkWiki
             // 
@@ -216,7 +217,7 @@
             this.linkPatches.Text = "More Patches";
             this.linkPatches.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPatches_LinkClicked);
             // 
-            // Default
+            // Launcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -235,7 +236,7 @@
             this.Controls.Add(this.checkWidescreen);
             this.Controls.Add(this.checkNoResize);
             this.Controls.Add(this.BtnStart);
-            this.Name = "Default";
+            this.Name = "Launcher";
             this.Text = "DemulShooterLauncher";
             this.Load += new System.EventHandler(this.Default_Load);
             this.ResumeLayout(false);

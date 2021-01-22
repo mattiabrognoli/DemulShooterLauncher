@@ -3,10 +3,24 @@ using System.IO;
 using System.Linq;
 using System.Security.Principal;
 
-namespace DemulShooterLauncher.Headers
+namespace DemulShooterLauncher
 {
     public static class Utility
     {
+        public enum IdMachines : int
+        {
+            demul07a,
+            chihiro,
+            globalvr,
+            lindbergh,
+            windows,
+            model2,
+            ringwide,
+            ttx,
+            seganu,
+            dolphin5
+        }
+
         static public bool checkPaths()
         {
             if (!File.Exists(".\\DemulShooter.exe") || !File.Exists(".\\DemulShooterX64.exe") || !File.Exists("DsCore.dll"))
@@ -19,25 +33,25 @@ namespace DemulShooterLauncher.Headers
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
 
-        static public string GetLink(string text)
+        static public string GetLink(int id)
         {
-            if (text == "chihiro")
+            if (id == (int)IdMachines.demul07a)
                 return "https://github.com/argonlefou/DemulShooter/wiki/Chihiro";
-            if (text == "demul07a")
+            if (id == (int)IdMachines.chihiro)
                 return "https://github.com/argonlefou/DemulShooter/wiki/Demul";
-            if (text == "dolphin5")
+            if (id == (int)IdMachines.globalvr)
                 return "https://github.com/argonlefou/DemulShooter/wiki/Dolphin";
-            if (text == "globalvr")
+            if (id == (int)IdMachines.lindbergh)
                 return "https://github.com/argonlefou/DemulShooter/wiki/Global-VR";
-            if (text == "lindbergh")
+            if (id == (int)IdMachines.windows)
                 return "https://github.com/argonlefou/DemulShooter/wiki/Lindbergh";
-            if (text == "model2")
+            if (id == (int)IdMachines.model2)
                 return "https://github.com/argonlefou/DemulShooter/wiki/Model2";
-            if (text == "ringwide")
+            if (id == (int)IdMachines.ttx)
                 return "https://github.com/argonlefou/DemulShooter/wiki/RingWide";
-            if (text == "ttx")
+            if (id == (int)IdMachines.seganu)
                 return "https://github.com/argonlefou/DemulShooter/wiki/Taito-Type-X";
-            if (text == "windows")
+            if (id == (int)IdMachines.dolphin5)
                 return "https://github.com/argonlefou/DemulShooter/wiki/Windows-games";
             return string.Empty;
         }
@@ -80,11 +94,6 @@ namespace DemulShooterLauncher.Headers
                 return true;
 
             return false;
-        }
-
-        static public List<Game> QueryGame(List<Machine> machines, string name)
-        {
-            return machines.Where(t => t.Name == name).Select(m => m.Games).SingleOrDefault();
         }
     }
 }

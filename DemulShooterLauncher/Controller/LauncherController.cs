@@ -1,4 +1,4 @@
-﻿using DemulShooterLauncher.Headers;
+﻿using DemulShooterLauncher.Objects;
 using System.Linq;
 using DemulShooterLauncher.Model;
 using System.Diagnostics;
@@ -7,45 +7,36 @@ namespace DemulShooterLauncher.Controller
 {
     class LauncherController
     {
-        MachineSummary _machineSummary;
+        LauncherModel _model;
         public LauncherController()
         {
-            _machineSummary = new MachineSummary();
+            _model = new LauncherModel();
         }
 
         public void LoadModel()
         {
-            _machineSummary.Machines = LauncherControllerHelper.LoadingMachines().ToArray();
+            _model.Targets = LauncherControllerHelper.LoadingTargets().ToArray();
+            _model.Roms = LauncherControllerHelper.LoadingRoms().ToArray();
         }
 
-        public Machine[] GetListMachines()
+        public Target[] GetListTargets()
         {
-            return _machineSummary.Machines;
+            return _model.Targets;
         }
 
-        public void StartCommand(string machineName, string gameName, string arguments, string path = ".\\")
+        public void StartCommand(int idRom, int idTarget, string arguments, string path = ".\\")
         {
-            LauncherControllerHelper.Run(path, LauncherControllerHelper.FindGameInGamesbyName(LauncherControllerHelper.FindGamesbyName(_machineSummary.Machines, machineName), gameName), LauncherControllerHelper.FindTargetbyName(_machineSummary.Machines, machineName), arguments);
+            LauncherControllerHelper.Run(path, LauncherControllerHelper.GetRomById(_model.Roms, idRom), LauncherControllerHelper.GetTargetById(_model.Targets, idTarget).Command , arguments);
         }
 
-        public Game[] GetListGamesFromMachineName(string machineName)
+        public Rom[] GetRomsWithIdTarget(int id)
         {
-            return LauncherControllerHelper.FindGamesbyName(_machineSummary.Machines, machineName);
+            return LauncherControllerHelper.GetRomByIdTarget(_model.Roms, id);
         }
 
-        public Game GetGameFromGameName(string machineName, string gameName)
+        public bool CheckControl(int romID, string controlText)
         {
-            return LauncherControllerHelper.FindGameInGamesbyName(LauncherControllerHelper.FindGamesbyName(_machineSummary.Machines, machineName), gameName);
-        }
-
-        public string GetTargetInListMachines(string machineName)
-        {
-            return LauncherControllerHelper.FindTargetbyName(_machineSummary.Machines, machineName);
-        }
-
-        public bool CheckControl(string machineName, string gameName, string controlText)
-        {
-            return GetGameFromGameName(machineName, gameName).Recommended.Contains(Utility.TextToArgument(controlText))? true : false;
+            return LauncherControllerHelper.GetRomById(_model.Roms, romID).Recommended.Contains(Utility.TextToArgument(controlText))? true : false;
         }
 
         public void StartLink(string link)
