@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Principal;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace DemulShooterLauncher
@@ -14,7 +13,7 @@ namespace DemulShooterLauncher
     {
         string pathRoot;
         List<CheckBox> checkBoxes;
-        LauncherController launcherController;
+        LauncherController launcherController = new LauncherController();
 
         public Launcher()
         {
@@ -22,15 +21,15 @@ namespace DemulShooterLauncher
             this.MaximizeBox = false;
             bool exit = false;
             string error = string.Empty;
-            if (!Utility.checkPaths())
+            if (!launcherController.CheckPaths())
             {
                 error += "Insert launcher in DemulShooter Folder\n";
-                exit = true;
+                exit = exit | true;
             }
-            if (!Utility.checkAdmin(new WindowsPrincipal(WindowsIdentity.GetCurrent())))
+            if (!launcherController.CheckAdmin())
             {
                 error += "Start with administrator\n";
-                exit = true;
+                exit = exit | true;
             }
             if (exit)
             {
@@ -43,26 +42,26 @@ namespace DemulShooterLauncher
         private void Default_Load(object sender, EventArgs e)
         {
             pathRoot = Directory.GetCurrentDirectory();
-            launcherController = new LauncherController();
             launcherController.LoadModel();
             checkBoxes = LoadCheckBox();
-            listBoxTarget.DataSource = launcherController.GetListTargets().Select(t => new DisplayMember { Id = t.Id, Description = t.Description }).ToList();
+            listBoxTarget.DataSource = launcherController.GetListTargets().Select(t => new DisplayMember { Id = t.Id, Description = t.ToString() }).ToList();
             listBoxRom.DisplayMember = listBoxTarget.DisplayMember = "Description";
             listBoxRom.ValueMember = listBoxTarget.ValueMember = "Id";
         }
 
         private List<CheckBox> LoadCheckBox()
         {
-            List<CheckBox> list = new List<CheckBox>();
-            list.Add(checkWidescreen);
-            list.Add(checkNoFire);
-            list.Add(checkNoResize);
-            list.Add(checkNoGuns);
-            list.Add(checkNoReload);
-            list.Add(checkNoCross);
-            list.Add(checkDdinumber);
-            list.Add(checkVerbs);
-            return list;
+            return new List<CheckBox>()
+            {
+                checkWidescreen,
+                checkNoFire,
+                checkNoResize,
+                checkNoGuns,
+                checkNoReload,
+                checkNoCross,
+                checkDdinumber,
+                checkVerbs
+            };
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
@@ -73,7 +72,7 @@ namespace DemulShooterLauncher
         private string getArguments()
         {
             string args = string.Empty;
-            checkBoxes.Where(c => c.Checked).ToList().ForEach(cn => args += " -" + Utility.TextToArgument(cn.Text));
+            checkBoxes.Where(c => c.Checked).ToList().ForEach(cn => args += " -" + launcherController.FromTextToArgument(cn.Text));
             return args;
         }
 
@@ -85,12 +84,12 @@ namespace DemulShooterLauncher
 
         private void listBoxTarget_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBoxRom.DataSource = launcherController.GetRomsWithIdTarget((listBoxTarget.SelectedItem as DisplayMember).Id).Select(t => new DisplayMember { Id = t.Id, Description = t.Description }).ToList();
+            listBoxRom.DataSource = launcherController.GetRomsWithIdTarget((listBoxTarget.SelectedItem as DisplayMember).Id).Select(t => new DisplayMember { Id = t.Id, Description = t.ToString() }).ToList();
         }
 
         private void listBoxRom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((listBoxTarget.SelectedItem as DisplayMember).Id == (int)Utility.IdMachines.dolphin5)
+            if ((listBoxTarget.SelectedItem as DisplayMember).Id == launcherController.GetIdDolphin())
                 disableAllCheckBox();
             else
             {
@@ -98,16 +97,10 @@ namespace DemulShooterLauncher
                     .ForEach(control =>
                     {
                         if (launcherController.CheckControl((listBoxRom.SelectedItem as DisplayMember).Id, control.Text))
-                        {
-                            control.Enabled = true;
-                            control.Checked = true;
-                        }
+                            control.Enabled = control.Checked = true;
                         else
                         {
-                            if (Utility.CanDisableArgument(control.Text))
-                                control.Enabled = false;
-                            else
-                                control.Enabled = true;
+                            control.Enabled = launcherController.CanDisableArgument(control.Text) ? false : true;
                             control.Checked = false;
                         }
                     });
@@ -121,7 +114,7 @@ namespace DemulShooterLauncher
 
         private void linkHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            launcherController.StartLink(Utility.GetLink((listBoxTarget.SelectedItem as DisplayMember).Id));
+            launcherController.StartLink(launcherController.GetLink((listBoxTarget.SelectedItem as DisplayMember).Id));
         }
 
         private void linkPatches_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

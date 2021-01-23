@@ -73,7 +73,6 @@
     <Compile Include="Objects\DisplayMember.cs" />
     <Compile Include="Objects\Rom.cs" />
     <Compile Include="Objects\Target.cs" />
-    <Compile Include="Utility.cs" />
     <Compile Include="main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Launcher.resx">

@@ -4,12 +4,78 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using static DemulShooterLauncher.Utility;
+using System.Security.Principal;
 
 namespace DemulShooterLauncher.Controller
 {
     public static class LauncherControllerHelper
     {
+        public enum IdMachines : int
+        {
+            demul07a,
+            chihiro,
+            globalvr,
+            lindbergh,
+            windows,
+            model2,
+            ringwide,
+            ttx,
+            seganu,
+            dolphin5
+        }
+
+        static public bool checkPaths()
+        {
+            if (!File.Exists(".\\DemulShooter.exe") || !File.Exists(".\\DemulShooterX64.exe") || !File.Exists("DsCore.dll"))
+                return false;
+            return true;
+        }
+
+        static public bool checkAdmin(WindowsPrincipal principal)
+        {
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+
+        static public string TextToArgument(string text)
+        {
+            if (text == "No resize")
+                return "noresize";
+            if (text == "Widescreen")
+                return "widescreen";
+            if (text == "No autoreload")
+                return "noautoreload";
+            if (text == "No autofire")
+                return "noautofire";
+            if (text == "No guns")
+                return "noguns";
+            if (text == "No Crosshair")
+                return "nocrosshair";
+            if (text == "DDI number")
+                return "ddinumber";
+            if (text == "Verbs")
+                return "v";
+
+            return string.Empty;
+        }
+
+        static public bool canDisableArgument(string text)
+        {
+            if (text == "No resize")
+                return true;
+            if (text == "No autoreload")
+                return true;
+            if (text == "No autofire")
+                return true;
+            if (text == "No guns")
+                return true;
+            if (text == "No Crosshair")
+                return true;
+            if (text == "DDI number")
+                return true;
+
+            return false;
+        }
+
         static public Target GetTargetById(Target[] targets, int id)
         {
             return targets.Where(m => m.Id == id).FirstOrDefault();
@@ -51,16 +117,16 @@ namespace DemulShooterLauncher.Controller
         {
             return new List<Target>()
             {
-                new Target((int)IdMachines.demul07a, "Demul 0.7a 180428", "demul07a"),
-                new Target((int)IdMachines.chihiro, "Cxbx-Reloaded", "chihiro"),
-                new Target((int)IdMachines.globalvr, "Global VR Roms", "globalvr"),
-                new Target((int)IdMachines.lindbergh, "TeknoParrot Loader (Lindberh)", "lindbergh"),
-                new Target((int)IdMachines.windows, "Window", "windows"),
-                new Target((int)IdMachines.model2, "Model2 Emulator v1.1a", "model2"),
-                new Target((int)IdMachines.ringwide, "TeknoParrot Loader (Ringwide)", "ringwide"),
-                new Target((int)IdMachines.ttx, "Taito Type X", "ttx"),
-                new Target((int)IdMachines.seganu, "TeknoParrot Loader (Sega Nu)", "seganu"),
-                new Target((int)IdMachines.dolphin5, "Dolphin x64 v5.0", "dolphin5")
+                new Target((int)IdMachines.demul07a, "Demul 0.7a 180428", "demul07a", "https://github.com/argonlefou/DemulShooter/wiki/Demul"),
+                new Target((int)IdMachines.chihiro, "Cxbx-Reloaded", "chihiro", "https://github.com/argonlefou/DemulShooter/wiki/Chihiro"),
+                new Target((int)IdMachines.globalvr, "Global VR", "globalvr", "https://github.com/argonlefou/DemulShooter/wiki/Global-VR"),
+                new Target((int)IdMachines.lindbergh, "TeknoParrot Loader (Lindberh)", "lindbergh", "https://github.com/argonlefou/DemulShooter/wiki/Lindbergh"),
+                new Target((int)IdMachines.windows, "Windows", "windows", "https://github.com/argonlefou/DemulShooter/wiki/Windows-games"),
+                new Target((int)IdMachines.model2, "Model2 Emulator v1.1a", "model2", "https://github.com/argonlefou/DemulShooter/wiki/Model2"),
+                new Target((int)IdMachines.ringwide, "TeknoParrot Loader (Ringwide)", "ringwide", "https://github.com/argonlefou/DemulShooter/wiki/RingWide"),
+                new Target((int)IdMachines.ttx, "Taito Type X", "ttx", "https://github.com/argonlefou/DemulShooter/wiki/Taito-Type-X"),
+                new Target((int)IdMachines.seganu, "TeknoParrot Loader (Sega Nu)", "seganu", "https://github.com/argonlefou/DemulShooter/wiki/SEGA-Nu"),
+                new Target((int)IdMachines.dolphin5, "Dolphin x64 v5.0", "dolphin5", "https://github.com/argonlefou/DemulShooter/wiki/Dolphin")
             };
         }
 
