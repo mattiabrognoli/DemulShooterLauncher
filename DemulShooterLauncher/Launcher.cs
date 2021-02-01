@@ -121,5 +121,10 @@ namespace DemulShooterLauncher
         {
             launcherController.StartLink("http://forum.arcadecontrols.com/index.php/topic,149714.0.html");
         }
+
+        private void linkHelp_LinkClicked(object sender, EventArgs e)
+        {
+            launcherController.StartLink(launcherController.GetLink((listBoxTarget.SelectedItem as DisplayMember).Id));
+        }
     }
 }

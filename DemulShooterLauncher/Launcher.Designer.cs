@@ -171,6 +171,7 @@
             this.listBoxTarget.Sorted = true;
             this.listBoxTarget.TabIndex = 15;
             this.listBoxTarget.SelectedIndexChanged += new System.EventHandler(this.listBoxTarget_SelectedIndexChanged);
+            this.listBoxTarget.DoubleClick += new System.EventHandler(this.linkHelp_LinkClicked);
             // 
             // listBoxRom
             // 
