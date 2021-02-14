@@ -84,12 +84,13 @@ namespace DemulShooterLauncher
 
         private void listBoxTarget_SelectedIndexChanged(object sender, EventArgs e)
         {
+            BtnScript.Enabled = (listBoxTarget.SelectedItem as DisplayMember).Id == launcherController.Dolphin ? false : true;
             listBoxRom.DataSource = launcherController.GetRomsWithIdTarget((listBoxTarget.SelectedItem as DisplayMember).Id).Select(t => new DisplayMember { Id = t.Id, Description = t.ToString() }).ToList();
         }
 
         private void listBoxRom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((listBoxTarget.SelectedItem as DisplayMember).Id == launcherController.GetIdDolphin())
+            if ((listBoxTarget.SelectedItem as DisplayMember).Id == launcherController.Dolphin || (listBoxTarget.SelectedItem as DisplayMember).Id == launcherController.GetIdEs3())
                 disableAllCheckBox();
             else
             {
@@ -114,6 +115,7 @@ namespace DemulShooterLauncher
 
         private void linkHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if((listBoxTarget.SelectedItem as DisplayMember).Id != launcherController.Es3)
             launcherController.StartLink(launcherController.GetLink((listBoxTarget.SelectedItem as DisplayMember).Id));
         }
 
@@ -125,6 +127,11 @@ namespace DemulShooterLauncher
         private void linkHelp_LinkClicked(object sender, EventArgs e)
         {
             launcherController.StartLink(launcherController.GetLink((listBoxTarget.SelectedItem as DisplayMember).Id));
+        }
+
+        private void BtnScript_Click(object sender, EventArgs e)
+        {
+            launcherController.StartCreateScript((listBoxRom.SelectedItem as DisplayMember).Id, (listBoxTarget.SelectedItem as DisplayMember).Id, getArguments(), pathRoot);
         }
     }
 }

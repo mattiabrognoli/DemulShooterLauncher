@@ -7,6 +7,14 @@
         public string Command { get; }
         public string Link { get; }
 
+        public Target(int id, string description, string command)
+        {
+            this.Id = id;
+            this.Description = description;
+            this.Command = command;
+            this.Link = string.Empty;
+        }
+
         public Target(int id, string description, string command, string link)
         {
             this.Id = id;

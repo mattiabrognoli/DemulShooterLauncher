@@ -9,6 +9,9 @@ namespace DemulShooterLauncher.Controller
 {
     class LauncherController
     {
+        public int Dolphin { get => (int)IdMachines.dolphin5; }
+        public int Es3 { get => (int)IdMachines.es3; }
+
         LauncherModel _model;
 
         public LauncherController()
@@ -40,6 +43,11 @@ namespace DemulShooterLauncher.Controller
         public void StartCommand(int idRom, int idTarget, string arguments, string path = ".\\")
         {
             Run(path, GetRomById(_model.Roms, idRom), GetTargetById(_model.Targets, idTarget).Command , arguments);
+        }
+
+        public void StartCreateScript(int idRom, int idTarget, string arguments, string path = ".\\")
+        {
+            CreateScript(path, GetRomById(_model.Roms, idRom), GetTargetById(_model.Targets, idTarget).Command, arguments);
         }
 
         public Rom[] GetRomsWithIdTarget(int id)
@@ -75,6 +83,11 @@ namespace DemulShooterLauncher.Controller
         public int GetIdDolphin()
         {
             return (int)IdMachines.dolphin5;
+        }
+
+        public int GetIdEs3()
+        {
+            return (int)IdMachines.es3;
         }
     }
 }

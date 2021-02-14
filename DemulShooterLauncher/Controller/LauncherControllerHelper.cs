@@ -21,7 +21,8 @@ namespace DemulShooterLauncher.Controller
             ringwide,
             ttx,
             seganu,
-            dolphin5
+            dolphin5,
+            es3
         }
 
         static public bool checkPaths()
@@ -91,7 +92,7 @@ namespace DemulShooterLauncher.Controller
             return Roms.Where(r => r.TargetId == idTarget).ToArray();
         }
 
-        static public void Run(string rootPath, Rom current, string Rom, string arguments)
+        static public void Run(string rootPath, Rom current, string target, string arguments)
         {
             ProcessStartInfo myProcessInfo = new ProcessStartInfo();
             myProcessInfo.FileName = Environment.ExpandEnvironmentVariables("%SystemRoot%") + "\\System32\\cmd.exe";
@@ -103,15 +104,26 @@ namespace DemulShooterLauncher.Controller
                 using (StreamWriter sw = p.StandardInput)
                 {
                     string inputText;
-                    if (Rom == "dolphin5")
-                        inputText = rootPath + "\\" + current.Starter + " -target=" + Rom + " -ddinumber=" + current.Command;
+                    if (target == "dolphin5")
+                        inputText = rootPath + "\\" + current.Starter + " -target=" + target + " -ddinumber=" + current.Command;
                     else
-                        inputText = rootPath + "\\" + current.Starter + " -target=" + Rom + " -rom=" + current.Command + arguments;
+                        inputText = rootPath + "\\" + current.Starter + " -target=" + target + " -rom=" + current.Command + arguments;
                     sw.WriteLine(inputText);
                     sw.Close();
                 }
                 p.WaitForExit();
             }
+        }
+
+        static public void CreateScript(string rootPath, Rom current, string target, string arguments)
+        {
+            string inputText;
+            if (target == "dolphin5")
+                inputText = current.Starter + " -target=" + target + " -ddinumber=" + current.Command;
+            else
+                inputText = current.Starter + " -target=" + target + " -rom=" + current.Command + arguments;
+            File.WriteAllText(rootPath + "\\" + current.Command + ".bat", inputText);
+
         }
         static public List<Target> LoadingTargets()
         {
@@ -126,7 +138,8 @@ namespace DemulShooterLauncher.Controller
                 new Target((int)IdMachines.ringwide, "TeknoParrot Loader (Ringwide)", "ringwide", "https://github.com/argonlefou/DemulShooter/wiki/RingWide"),
                 new Target((int)IdMachines.ttx, "Taito Type X", "ttx", "https://github.com/argonlefou/DemulShooter/wiki/Taito-Type-X"),
                 new Target((int)IdMachines.seganu, "TeknoParrot Loader (Sega Nu)", "seganu", "https://github.com/argonlefou/DemulShooter/wiki/SEGA-Nu"),
-                new Target((int)IdMachines.dolphin5, "Dolphin x64 v5.0", "dolphin5", "https://github.com/argonlefou/DemulShooter/wiki/Dolphin")
+                new Target((int)IdMachines.dolphin5, "Dolphin x64 v5.0", "dolphin5", "https://github.com/argonlefou/DemulShooter/wiki/Dolphin"),
+                new Target((int)IdMachines.es3, "Namco System ES3", "es3")
             };
         }
 
@@ -208,6 +221,9 @@ namespace DemulShooterLauncher.Controller
 
                 //seganu
                 new Rom(id++, (int)IdMachines.seganu, "Luigi Mansion Arcade", "lma", null, true),
+
+                //es3
+                new Rom(id++, (int)IdMachines.es3, "Time Crisis 5", "tc5", null, true),
 
                 //dolphin5
                 new Rom(id++, (int)IdMachines.dolphin5, "1 -> KeyboardMouse", "1"),
