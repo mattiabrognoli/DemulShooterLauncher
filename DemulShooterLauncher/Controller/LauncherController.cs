@@ -89,5 +89,10 @@ namespace DemulShooterLauncher.Controller
         {
             return (int)IdMachines.es3;
         }
+
+        public string TextMessageBox(string path, int idRom)
+        {
+            return "Script Created in" + "\n" + path + "\\" + GetRomById(_model.Roms, idRom).Command + ".bat";
+        }
     }
 }

@@ -132,6 +132,7 @@ namespace DemulShooterLauncher
         private void BtnScript_Click(object sender, EventArgs e)
         {
             launcherController.StartCreateScript((listBoxRom.SelectedItem as DisplayMember).Id, (listBoxTarget.SelectedItem as DisplayMember).Id, getArguments(), pathRoot);
+            MessageBox.Show(launcherController.TextMessageBox(pathRoot, (listBoxRom.SelectedItem as DisplayMember).Id));
         }
     }
 }
