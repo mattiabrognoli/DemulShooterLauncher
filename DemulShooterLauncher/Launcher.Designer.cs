@@ -51,6 +51,7 @@
             this.linkWiki = new System.Windows.Forms.LinkLabel();
             this.linkHelp = new System.Windows.Forms.LinkLabel();
             this.linkPatches = new System.Windows.Forms.LinkLabel();
+            this.BtnScript = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnStart
@@ -171,6 +172,7 @@
             this.listBoxTarget.Sorted = true;
             this.listBoxTarget.TabIndex = 15;
             this.listBoxTarget.SelectedIndexChanged += new System.EventHandler(this.listBoxTarget_SelectedIndexChanged);
+            this.listBoxTarget.DoubleClick += new System.EventHandler(this.linkHelp_LinkClicked);
             // 
             // listBoxRom
             // 
@@ -182,6 +184,7 @@
             this.listBoxRom.Sorted = true;
             this.listBoxRom.TabIndex = 16;
             this.listBoxRom.SelectedIndexChanged += new System.EventHandler(this.listBoxRom_SelectedIndexChanged);
+            this.listBoxRom.DoubleClick += new System.EventHandler(this.BtnStart_Click);
             // 
             // linkWiki
             // 
@@ -216,11 +219,22 @@
             this.linkPatches.Text = "More Patches";
             this.linkPatches.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPatches_LinkClicked);
             // 
-            // Default
+            // BtnScript
+            // 
+            this.BtnScript.Location = new System.Drawing.Point(544, 184);
+            this.BtnScript.Name = "BtnScript";
+            this.BtnScript.Size = new System.Drawing.Size(78, 23);
+            this.BtnScript.TabIndex = 20;
+            this.BtnScript.Text = "Create Script";
+            this.BtnScript.UseVisualStyleBackColor = true;
+            this.BtnScript.Click += new System.EventHandler(this.BtnScript_Click);
+            // 
+            // Launcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 212);
+            this.ClientSize = new System.Drawing.Size(627, 212);
+            this.Controls.Add(this.BtnScript);
             this.Controls.Add(this.linkPatches);
             this.Controls.Add(this.linkHelp);
             this.Controls.Add(this.linkWiki);
@@ -235,7 +249,7 @@
             this.Controls.Add(this.checkWidescreen);
             this.Controls.Add(this.checkNoResize);
             this.Controls.Add(this.BtnStart);
-            this.Name = "Default";
+            this.Name = "Launcher";
             this.Text = "DemulShooterLauncher";
             this.Load += new System.EventHandler(this.Default_Load);
             this.ResumeLayout(false);
@@ -266,6 +280,7 @@
         private System.Windows.Forms.LinkLabel linkWiki;
         private System.Windows.Forms.LinkLabel linkHelp;
         private System.Windows.Forms.LinkLabel linkPatches;
+        private System.Windows.Forms.Button BtnScript;
     }
 }
 

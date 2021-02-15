@@ -1,56 +1,98 @@
-﻿using DemulShooterLauncher.Headers;
-using System.Linq;
+﻿using DemulShooterLauncher.Objects;
 using DemulShooterLauncher.Model;
 using System.Diagnostics;
+using System.Security.Principal;
+using System.Linq;
+using static DemulShooterLauncher.Controller.LauncherControllerHelper;
 
 namespace DemulShooterLauncher.Controller
 {
     class LauncherController
     {
-        MachineSummary _machineSummary;
+        public int Dolphin { get => (int)IdMachines.dolphin5; }
+        public int Es3 { get => (int)IdMachines.es3; }
+
+        LauncherModel _model;
+
         public LauncherController()
         {
-            _machineSummary = new MachineSummary();
+            _model = new LauncherModel();
         }
 
         public void LoadModel()
         {
-            _machineSummary.Machines = LauncherControllerHelper.LoadingMachines().ToArray();
+            _model.Targets = LoadingTargets().ToArray();
+            _model.Roms = LoadingRoms().ToArray();
         }
 
-        public Machine[] GetListMachines()
+        public Target[] GetListTargets()
         {
-            return _machineSummary.Machines;
+            return _model.Targets;
         }
 
-        public void StartCommand(string machineName, string gameName, string arguments, string path = ".\\")
+        public string GetLink(int idTarget)
         {
-            LauncherControllerHelper.Run(path, LauncherControllerHelper.FindGameInGamesbyName(LauncherControllerHelper.FindGamesbyName(_machineSummary.Machines, machineName), gameName), LauncherControllerHelper.FindTargetbyName(_machineSummary.Machines, machineName), arguments);
+            return _model.Targets.AsQueryable().Where(t => t.Id == idTarget).SingleOrDefault().Link;
         }
 
-        public Game[] GetListGamesFromMachineName(string machineName)
+        public bool CanDisableArgument(string text)
         {
-            return LauncherControllerHelper.FindGamesbyName(_machineSummary.Machines, machineName);
+            return canDisableArgument(text);
         }
 
-        public Game GetGameFromGameName(string machineName, string gameName)
+        public void StartCommand(int idRom, int idTarget, string arguments, string path = ".\\")
         {
-            return LauncherControllerHelper.FindGameInGamesbyName(LauncherControllerHelper.FindGamesbyName(_machineSummary.Machines, machineName), gameName);
+            Run(path, GetRomById(_model.Roms, idRom), GetTargetById(_model.Targets, idTarget).Command , arguments);
         }
 
-        public string GetTargetInListMachines(string machineName)
+        public void StartCreateScript(int idRom, int idTarget, string arguments, string path = ".\\")
         {
-            return LauncherControllerHelper.FindTargetbyName(_machineSummary.Machines, machineName);
+            CreateScript(path, GetRomById(_model.Roms, idRom), GetTargetById(_model.Targets, idTarget).Command, arguments);
         }
 
-        public bool CheckControl(string machineName, string gameName, string controlText)
+        public Rom[] GetRomsWithIdTarget(int id)
         {
-            return GetGameFromGameName(machineName, gameName).Recommended.Contains(Utility.TextToArgument(controlText))? true : false;
+            return GetRomByIdTarget(_model.Roms, id);
+        }
+
+        public bool CheckControl(int romID, string controlText)
+        {
+            return GetRomById(_model.Roms, romID).Recommended.Contains(TextToArgument(controlText))? true : false;
         }
 
         public void StartLink(string link)
         {
             using (Process.Start(link)) { }
+        }
+
+        public bool CheckPaths()
+        {
+            return checkPaths();
+        }
+
+        public string FromTextToArgument(string text)
+        {
+            return TextToArgument(text);
+        }
+
+        public bool CheckAdmin()
+        {
+            return checkAdmin(new WindowsPrincipal(WindowsIdentity.GetCurrent()));
+        }
+
+        public int GetIdDolphin()
+        {
+            return (int)IdMachines.dolphin5;
+        }
+
+        public int GetIdEs3()
+        {
+            return (int)IdMachines.es3;
+        }
+
+        public string TextMessageBox(string path, int idRom)
+        {
+            return "Script Created in" + "\n" + path + "\\" + GetRomById(_model.Roms, idRom).Command + ".bat";
         }
     }
 }
