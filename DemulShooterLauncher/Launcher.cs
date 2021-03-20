@@ -12,25 +12,31 @@ namespace DemulShooterLauncher
     public partial class Launcher : Form
     {
         string pathRoot;
-        List<CheckBox> checkBoxes;
+        List<CheckBox> _checkBoxes;
         LauncherController launcherController = new LauncherController();
+
+        public List<CheckBox> CheckBoxes
+        {
+            get
+            {
+                if (_checkBoxes == null)
+                    _checkBoxes = Controls.OfType<CheckBox>().ToList();
+                return _checkBoxes;
+            }
+        }
 
         public Launcher()
         {
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            bool exit = false;
+            MaximizeBox = false;
+            bool exit;
             string error = string.Empty;
-            if (!launcherController.CheckPaths())
-            {
+            if (exit = !launcherController.CheckPaths())
                 error += "Insert launcher in DemulShooter Folder\n";
-                exit = exit | true;
-            }
-            if (!launcherController.CheckAdmin())
-            {
+
+            if (exit = !launcherController.CheckAdmin())
                 error += "Start with administrator\n";
-                exit = exit | true;
-            }
+
             if (exit)
             {
                 MessageBox.Show("Error!\n" + error);
@@ -43,25 +49,9 @@ namespace DemulShooterLauncher
         {
             pathRoot = Directory.GetCurrentDirectory();
             launcherController.LoadModel();
-            checkBoxes = LoadCheckBox();
             listBoxTarget.DataSource = launcherController.GetListTargets().Select(t => new DisplayMember { Id = t.Id, Description = t.ToString() }).ToList();
             listBoxRom.DisplayMember = listBoxTarget.DisplayMember = "Description";
             listBoxRom.ValueMember = listBoxTarget.ValueMember = "Id";
-        }
-
-        private List<CheckBox> LoadCheckBox()
-        {
-            return new List<CheckBox>()
-            {
-                checkWidescreen,
-                checkNoFire,
-                checkNoResize,
-                checkNoGuns,
-                checkNoReload,
-                checkNoCross,
-                checkDdinumber,
-                checkVerbs
-            };
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
@@ -72,13 +62,13 @@ namespace DemulShooterLauncher
         private string getArguments()
         {
             string args = string.Empty;
-            checkBoxes.Where(c => c.Checked).ToList().ForEach(cn => args += " -" + launcherController.FromTextToArgument(cn.Text));
+            CheckBoxes.Where(c => c.Checked).ToList().ForEach(cn => args += " -" + launcherController.FromTextToArgument(cn.Text));
             return args;
         }
 
         private void disableAllCheckBox()
         {
-            checkBoxes
+            CheckBoxes
                 .ForEach(control => { control.Checked = false; control.Enabled = false; });
         }
 
@@ -94,7 +84,7 @@ namespace DemulShooterLauncher
                 disableAllCheckBox();
             else
             {
-                checkBoxes
+                CheckBoxes
                     .ForEach(control =>
                     {
                         if (launcherController.CheckControl((listBoxRom.SelectedItem as DisplayMember).Id, control.Text))
