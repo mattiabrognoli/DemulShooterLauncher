@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Controller\LauncherController.cs" />
     <Compile Include="Controller\LauncherControllerHelper.cs" />
+    <Compile Include="Interface\IArguments.cs" />
     <Compile Include="Launcher.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +71,8 @@
       <DependentUpon>Launcher.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\LauncherModel.cs" />
+    <Compile Include="Objects\Arguments.cs" />
+    <Compile Include="Objects\DisplayArgument.cs" />
     <Compile Include="Objects\DisplayMember.cs" />
     <Compile Include="Objects\Rom.cs" />
     <Compile Include="Objects\Target.cs" />

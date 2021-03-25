@@ -149,87 +149,87 @@ namespace DemulShooterLauncher.Controller
             return new List<Rom>()
             {
                 //demul07a
-                new Rom(id++, (int)IdMachines.demul07a, "Brave Fire fighters", "braveff", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "Confidential Mission", "confmiss", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "Death Crimson OX", "deathcox", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "House of The Dead II (US)", "hotd2", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "House of The Dead II", "hotd2o", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "House of The Dead II (Prototype)", "hotd2p", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "Lupin The Third", "lupinsho", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "Manic Panic Ghosts", "manicpnc", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "The Maze of the kings", "mok", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "Ninja Assault (World)", "ninjaslt", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "Ninja Assault (Asia)", "ninjaslta", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "Ninja Assault (Japan)", "ninjasltj", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "Ninja Assault (US)", "ninjasltu", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "Pokasuka Ghosts", "pokasuka", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "Ranger Mission", "rangrmsn", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "Sports Shoting USA", "sprtshot", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "Extreme Hunting", "xtrmhunt", "noresize"),
-                new Rom(id++, (int)IdMachines.demul07a, "Extreme Hunting 2", "xtrmhnt2", "noresize"),
+                new Rom(id++, (int)IdMachines.demul07a, "Brave Fire fighters", "braveff", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "Confidential Mission", "confmiss", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "Death Crimson OX", "deathcox", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "House of The Dead II (US)", "hotd2", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "House of The Dead II", "hotd2o", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "House of The Dead II (Prototype)", "hotd2p", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "Lupin The Third", "lupinsho", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "Manic Panic Ghosts", "manicpnc", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "The Maze of the kings", "mok", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "Ninja Assault (World)", "ninjaslt", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "Ninja Assault (Asia)", "ninjaslta", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "Ninja Assault (Japan)", "ninjasltj", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "Ninja Assault (US)", "ninjasltu", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "Pokasuka Ghosts", "pokasuka", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "Ranger Mission", "rangrmsn", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "Sports Shoting USA", "sprtshot", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "Extreme Hunting", "xtrmhunt", new DemulArguments()),
+                new Rom(id++, (int)IdMachines.demul07a, "Extreme Hunting 2", "xtrmhnt2", new DemulArguments()),
 
                 //chihiro
-                new Rom(id++, (int)IdMachines.chihiro, "Virtual Cop 3", "vcop3"),
+                new Rom(id++, (int)IdMachines.chihiro, "Virtual Cop 3", "vcop3", new ChihiroArguments()),
 
                 //globalvr
-                new Rom(id++, (int)IdMachines.globalvr, "Aliens Extermination", "aliens"),
-                new Rom(id++, (int)IdMachines.globalvr, "Fright Fear Land", "fearland"),
+                new Rom(id++, (int)IdMachines.globalvr, "Aliens Extermination", "aliens", new GlobalvrArguments()),
+                new Rom(id++, (int)IdMachines.globalvr, "Fright Fear Land", "fearland", new FrightFearLandArguments()),
 
                 //lindbergh
-                new Rom(id++, (int)IdMachines.lindbergh, "Too Spicy", "2spicy"),
-                new Rom(id++, (int)IdMachines.lindbergh, "House of the dead 4", "hotd4"),
-                new Rom(id++, (int)IdMachines.lindbergh, "Let's Go Jungle", "lgj"),
-                new Rom(id++, (int)IdMachines.lindbergh, "Let's Go Jungle (1 player)", "lgjsp"),
-                new Rom(id++, (int)IdMachines.lindbergh, "Rambo", "rambo", " nocrosshair"),
+                new Rom(id++, (int)IdMachines.lindbergh, "Too Spicy", "2spicy", new LindberghArguments()),
+                new Rom(id++, (int)IdMachines.lindbergh, "House of the dead 4", "hotd4", new LindberghArguments()),
+                new Rom(id++, (int)IdMachines.lindbergh, "Let's Go Jungle", "lgj", new LindberghArguments()),
+                new Rom(id++, (int)IdMachines.lindbergh, "Let's Go Jungle (1 player)", "lgjsp", new LindberghArguments()),
+                new Rom(id++, (int)IdMachines.lindbergh, "Rambo", "rambo", new RamboLindberghArguments()),
 
                 //windows
-                new Rom(id++, (int)IdMachines.windows, "Art Is Dead", "artdead"),
-                new Rom(id++, (int)IdMachines.windows, "Heavy Fire Afghanistan", "hfa"),
-                new Rom(id++, (int)IdMachines.windows, "Heavy Fire Afghanistan (Dual Player)", "hfa2p"),
-                new Rom(id++, (int)IdMachines.windows, "Heavy Fire Shattered Spear", "hfss"),
-                new Rom(id++, (int)IdMachines.windows, "Heavy Fire Shattered Spear (Dual Player)", "hfss2p"),
-                new Rom(id++, (int)IdMachines.windows, "Reload", "reload", "nocrosshair"),
-                new Rom(id++, (int)IdMachines.windows, "House of The Dead II (PC)", "hod2pc"),
-                new Rom(id++, (int)IdMachines.windows, "House of The Dead III", "hod3pc", "noautoreload noguns"),
-                new Rom(id++, (int)IdMachines.windows, "House of The Dead : Overkill", "hodo"),
+                new Rom(id++, (int)IdMachines.windows, "Art Is Dead", "artdead", new WindowsArguments()),
+                new Rom(id++, (int)IdMachines.windows, "Heavy Fire Afghanistan", "hfa", new WindowsArguments()),
+                new Rom(id++, (int)IdMachines.windows, "Heavy Fire Afghanistan (Dual Player)", "hfa2p", new WindowsArguments()),
+                new Rom(id++, (int)IdMachines.windows, "Heavy Fire Shattered Spear", "hfss", new WindowsArguments()),
+                new Rom(id++, (int)IdMachines.windows, "Heavy Fire Shattered Spear (Dual Player)", "hfss2p", new WindowsArguments()),
+                new Rom(id++, (int)IdMachines.windows, "Reload", "reload", new ReloadArguments()),
+                new Rom(id++, (int)IdMachines.windows, "House of The Dead II (PC)", "hod2pc", new WindowsArguments()),
+                new Rom(id++, (int)IdMachines.windows, "House of The Dead III", "hod3pc", new Hod3Arguments()),
+                new Rom(id++, (int)IdMachines.windows, "House of The Dead : Overkill", "hodo", new WindowsArguments()),
 
                 //model2
-                new Rom(id++, (int)IdMachines.model2, "Behind Enemy Lines", "bel"),
-                new Rom(id++, (int)IdMachines.model2, "Gunblade NY", "gunblade"),
-                new Rom(id++, (int)IdMachines.model2, "House of the Dead", "hotd"),
-                new Rom(id++, (int)IdMachines.model2, "Railchase 2", "rchase2"),
-                new Rom(id++, (int)IdMachines.model2, "Virtua Cop", "vcop"),
-                new Rom(id++, (int)IdMachines.model2, "Virtua Cop 2", "vcop2"),
+                new Rom(id++, (int)IdMachines.model2, "Behind Enemy Lines", "bel", new Model2Arguments()),
+                new Rom(id++, (int)IdMachines.model2, "Gunblade NY", "gunblade", new Model2Arguments()),
+                new Rom(id++, (int)IdMachines.model2, "House of the Dead", "hotd", new Model2Arguments()),
+                new Rom(id++, (int)IdMachines.model2, "Railchase 2", "rchase2", new Model2Arguments()),
+                new Rom(id++, (int)IdMachines.model2, "Virtua Cop", "vcop", new Model2Arguments()),
+                new Rom(id++, (int)IdMachines.model2, "Virtua Cop 2", "vcop2", new Model2Arguments()),
 
                 //ringwide
-                new Rom(id++, (int)IdMachines.ringwide, "Let's Go Island: Lost on the Island of Tropics", "lgi"),
-                new Rom(id++, (int)IdMachines.ringwide, "Let's Go Island: Lost on the Island of Tropics 3D", "lgi3D"),
-                new Rom(id++, (int)IdMachines.ringwide, "Operation G.H.O.S.T.", "og"),
-                new Rom(id++, (int)IdMachines.ringwide, "Sega Dream Riders", "sdr"),
-                new Rom(id++, (int)IdMachines.ringwide, "Sega Golden Gun", "sgg"),
-                new Rom(id++, (int)IdMachines.ringwide, "Transformers: Human Alliance", "tha"),
+                new Rom(id++, (int)IdMachines.ringwide, "Let's Go Island: Lost on the Island of Tropics", "lgi", new RingWideArguments()),
+                new Rom(id++, (int)IdMachines.ringwide, "Let's Go Island: Lost on the Island of Tropics 3D", "lgi3D", new RingWideArguments()),
+                new Rom(id++, (int)IdMachines.ringwide, "Operation G.H.O.S.T.", "og", new RingWideArguments()),
+                new Rom(id++, (int)IdMachines.ringwide, "Sega Dream Riders", "sdr", new RingWideArguments()),
+                new Rom(id++, (int)IdMachines.ringwide, "Sega Golden Gun", "sgg", new RingWideArguments()),
+                new Rom(id++, (int)IdMachines.ringwide, "Transformers: Human Alliance", "tha", new RingWideArguments()),
 
                 //ttx
-                new Rom(id++, (int)IdMachines.ttx, "Elevator Action Death Parade", "eapd"),
-                new Rom(id++, (int)IdMachines.ttx, "Silent Hill: The Arcade", "sha"),
-                new Rom(id++, (int)IdMachines.ttx, "Gaia Attack 4", "gattack4"),
-                new Rom(id++, (int)IdMachines.ttx, "Gundam: Spirit of Zeon", "gsoz"),
-                new Rom(id++, (int)IdMachines.ttx, "Gundam: Spirit of Zeon (DualScreen)", "gsoz2p"),
-                new Rom(id++, (int)IdMachines.ttx, "Haunted Museum", "hmuseum"),
-                new Rom(id++, (int)IdMachines.ttx, "Haunted Museum 2", "hmuseum2"),
-                new Rom(id++, (int)IdMachines.ttx, "Music Gun Gun! 2", "mgungun2"),
+                new Rom(id++, (int)IdMachines.ttx, "Elevator Action Death Parade", "eapd", new TaitoTypeXArguments()),
+                new Rom(id++, (int)IdMachines.ttx, "Silent Hill: The Arcade", "sha", new TaitoTypeXArguments()),
+                new Rom(id++, (int)IdMachines.ttx, "Gaia Attack 4", "gattack4", new TaitoTypeXArguments()),
+                new Rom(id++, (int)IdMachines.ttx, "Gundam: Spirit of Zeon", "gsoz", new TaitoTypeXArguments()),
+                new Rom(id++, (int)IdMachines.ttx, "Gundam: Spirit of Zeon (DualScreen)", "gsoz2p", new TaitoTypeXArguments()),
+                new Rom(id++, (int)IdMachines.ttx, "Haunted Museum", "hmuseum", new TaitoTypeXArguments()),
+                new Rom(id++, (int)IdMachines.ttx, "Haunted Museum 2", "hmuseum2", new TaitoTypeXArguments()),
+                new Rom(id++, (int)IdMachines.ttx, "Music Gun Gun! 2", "mgungun2", new TaitoTypeXArguments()),
 
                 //seganu
-                new Rom(id++, (int)IdMachines.seganu, "Luigi Mansion Arcade", "lma", null, true),
+                new Rom(id++, (int)IdMachines.seganu, "Luigi Mansion Arcade", "lma", new SEGANuArguments(), true),
 
                 //es3
-                new Rom(id++, (int)IdMachines.es3, "Time Crisis 5", "tc5", null, true),
+                new Rom(id++, (int)IdMachines.es3, "Time Crisis 5", "tc5", new ES3Arguments(), true),
 
                 //dolphin5
-                new Rom(id++, (int)IdMachines.dolphin5, "1 -> KeyboardMouse", "1"),
-                new Rom(id++, (int)IdMachines.dolphin5, "2 -> Aimtrak #1", "2"),
-                new Rom(id++, (int)IdMachines.dolphin5, "3 -> Aimtrak #2", "3"),
-                new Rom(id++, (int)IdMachines.dolphin5, "4 -> Other", "4")
+                new Rom(id++, (int)IdMachines.dolphin5, "1 -> KeyboardMouse", "1", new DolphinArguments()),
+                new Rom(id++, (int)IdMachines.dolphin5, "2 -> Aimtrak #1", "2", new DolphinArguments()),
+                new Rom(id++, (int)IdMachines.dolphin5, "3 -> Aimtrak #2", "3", new DolphinArguments()),
+                new Rom(id++, (int)IdMachines.dolphin5, "4 -> Other", "4", new DolphinArguments())
             };
         }
     }

@@ -30,6 +30,11 @@ namespace DemulShooterLauncher.Controller
             return _model.Targets;
         }
 
+        public Rom GetRom(int id)
+        {
+            return GetRomById(_model.Roms, id);
+        }
+
         public string GetLink(int idTarget)
         {
             return _model.Targets.AsQueryable().Where(t => t.Id == idTarget).SingleOrDefault().Link;
@@ -53,11 +58,6 @@ namespace DemulShooterLauncher.Controller
         public Rom[] GetRomsWithIdTarget(int id)
         {
             return GetRomByIdTarget(_model.Roms, id);
-        }
-
-        public bool CheckControl(int romID, string controlText)
-        {
-            return GetRomById(_model.Roms, romID).Recommended.Contains(TextToArgument(controlText))? true : false;
         }
 
         public void StartLink(string link)
@@ -92,7 +92,7 @@ namespace DemulShooterLauncher.Controller
 
         public string TextMessageBox(string path, int idRom)
         {
-            return "Script Created in" + "\n" + path + "\\" + GetRomById(_model.Roms, idRom).Command + ".bat";
+            return "Script created in" + "\n" + path + "\\" + GetRomById(_model.Roms, idRom).Command + ".bat";
         }
     }
 }
