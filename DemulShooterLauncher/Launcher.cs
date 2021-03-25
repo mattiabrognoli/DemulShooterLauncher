@@ -2,9 +2,9 @@
 using DemulShooterLauncher.Objects;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Security.Principal;
 using System.Windows.Forms;
 
 namespace DemulShooterLauncher
@@ -29,13 +29,19 @@ namespace DemulShooterLauncher
         {
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            bool exit;
+            bool exit = false;
             string error = string.Empty;
-            if (exit = !launcherController.CheckPaths())
+            if (!launcherController.CheckPaths())
+            {
                 error += "Insert launcher in DemulShooter Folder\n";
+                exit = true;
+            }
 
-            if (exit = !launcherController.CheckAdmin())
+            if (!launcherController.CheckAdmin())
+            {
                 error += "Start with administrator\n";
+                exit = true;
+            }
 
             if (exit)
             {
@@ -62,14 +68,8 @@ namespace DemulShooterLauncher
         private string getArguments()
         {
             string args = string.Empty;
-            CheckBoxes.Where(c => c.Checked).ToList().ForEach(cn => args += " -" + launcherController.FromTextToArgument(cn.Text));
+            PanelArguments.Controls.OfType<CheckBox>().Where(c => c.Checked).Select(c => c.Tag).ToList().ForEach(t => args += " -" + t);
             return args;
-        }
-
-        private void disableAllCheckBox()
-        {
-            CheckBoxes
-                .ForEach(control => { control.Checked = false; control.Enabled = false; });
         }
 
         private void listBoxTarget_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,22 +80,25 @@ namespace DemulShooterLauncher
 
         private void listBoxRom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((listBoxTarget.SelectedItem as DisplayMember).Id == launcherController.Dolphin || (listBoxTarget.SelectedItem as DisplayMember).Id == launcherController.GetIdEs3())
-                disableAllCheckBox();
-            else
-            {
-                CheckBoxes
-                    .ForEach(control =>
-                    {
-                        if (launcherController.CheckControl((listBoxRom.SelectedItem as DisplayMember).Id, control.Text))
-                            control.Enabled = control.Checked = true;
-                        else
-                        {
-                            control.Enabled = launcherController.CanDisableArgument(control.Text) ? false : true;
-                            control.Checked = false;
-                        }
-                    });
-            }
+            PanelArguments.Controls.Clear();
+            int i = 0;
+            Rom currentRom = launcherController.GetRom((listBoxRom.SelectedItem as DisplayMember).Id);
+
+
+                currentRom.Arguments.GetArguments().ToList().ForEach(a =>
+                {
+                    CheckBox box = new CheckBox();
+                    box.Tag = a.Value;
+                    box.Text = a.DisplayText;
+                    box.Checked = a.Check;
+                    box.Visible = a.Visible;
+                    box.Location = new Point(0, i);
+                    ToolTip toolTip = new ToolTip();
+                    toolTip.IsBalloon = true;
+                    toolTip.SetToolTip(box, a.Description);
+                    i += 19;
+                    PanelArguments.Controls.Add(box);
+                });
         }
 
         private void linkWiki_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
