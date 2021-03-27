@@ -9,30 +9,11 @@ namespace DemulShooterLauncher.Objects
 {
     public class Arguments : IArguments<DisplayArgument>
     {
-        protected DisplayArgument[] _argumentsList;
-
         public DisplayArgument[] GetArguments()
         {
             List<DisplayArgument> list = new List<DisplayArgument>();
             list.AddRange(GetDisplayArguments());
-            _argumentsList = list.OrderBy(a => a.Value).ToArray();
-            return _argumentsList;
-        }
-
-        public void ChangeSet(string key, bool change)
-        {
-            DisplayArgument arg = _argumentsList.Where(a => a.Value == key).SingleOrDefault();
-
-            if (arg != null)
-                arg.Check = change;
-        }
-
-        public void ChangeVisible(string key, bool change)
-        {
-            DisplayArgument arg = _argumentsList.Where(a => a.Value == key).SingleOrDefault();
-
-            if (arg != null)
-                arg.Visible = change;
+            return list.ToArray();
         }
 
         public DisplayArgument GetCustomArgument(string displayText, string value, bool check, bool visible, string description)
@@ -49,25 +30,11 @@ namespace DemulShooterLauncher.Objects
 
         protected virtual DisplayArgument[] GetDisplayArguments()
         {
-            List<DisplayArgument> result = new List<DisplayArgument>()
+            return new List<DisplayArgument>()
             {
-                new DisplayArgument()
-                {
-                    DisplayText = "DDI number",
-                    Value = "ddinumber",
-                    Check = false,
-                    Visible = true
-                },
-                new DisplayArgument()
-                {
-                    DisplayText = "Verbs",
-                    Value = "v",
-                    Check = false,
-                    Visible = true
-                }
-            };
-
-            return result.ToArray();
+                GetCustomArgument("DDI number", "ddinumber", false, true, "Dolphin's DirectInput number for P2 device (optional, default = 2)"),
+                GetCustomArgument("Verbs", "v", false, true ,"Verbose ON (debug information written to a text file)")
+            }.ToArray();
         }
     }
 

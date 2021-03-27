@@ -11,10 +11,6 @@ namespace DemulShooterLauncher.Interface
     {
         T[] GetArguments();
 
-        void ChangeSet(string key, bool change);
-
-        void ChangeVisible(string key, bool change);
-
         T GetCustomArgument(string displayText, string value, bool check, bool visible, string description);
     }
 }
