@@ -93,9 +93,8 @@ namespace DemulShooterLauncher
                     box.Checked = a.Check;
                     box.Visible = a.Visible;
                     box.Location = new Point(0, i);
-                    ToolTip toolTip = new ToolTip();
-                    toolTip.IsBalloon = true;
-                    toolTip.SetToolTip(box, a.Description);
+                    if(!string.IsNullOrEmpty(a.Description))
+                        new ToolTip().SetToolTip(box, a.Description);
                     i += 19;
                     PanelArguments.Controls.Add(box);
                 });
