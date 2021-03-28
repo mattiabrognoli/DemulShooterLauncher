@@ -126,5 +126,10 @@ namespace DemulShooterLauncher
             launcherController.StartCreateScript((listBoxRom.SelectedItem as DisplayMember).Id, (listBoxTarget.SelectedItem as DisplayMember).Id, getArguments(), pathRoot);
             MessageBox.Show(launcherController.TextMessageBox(pathRoot, (listBoxRom.SelectedItem as DisplayMember).Id));
         }
+
+        private void BtnCredits_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Developed by Mattia Brognoli (mattia.brognoli9@gmail.com)");
+        }
     }
 }

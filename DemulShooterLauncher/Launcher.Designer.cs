@@ -36,6 +36,7 @@
             this.linkPatches = new System.Windows.Forms.LinkLabel();
             this.BtnScript = new System.Windows.Forms.Button();
             this.PanelArguments = new System.Windows.Forms.Panel();
+            this.BtnCredits = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnStart
@@ -122,11 +123,22 @@
             this.PanelArguments.Size = new System.Drawing.Size(89, 178);
             this.PanelArguments.TabIndex = 21;
             // 
+            // BtnCredits
+            // 
+            this.BtnCredits.Location = new System.Drawing.Point(544, 69);
+            this.BtnCredits.Name = "BtnCredits";
+            this.BtnCredits.Size = new System.Drawing.Size(78, 23);
+            this.BtnCredits.TabIndex = 22;
+            this.BtnCredits.Text = "Credits";
+            this.BtnCredits.UseVisualStyleBackColor = true;
+            this.BtnCredits.Click += new System.EventHandler(this.BtnCredits_Click);
+            // 
             // Launcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 212);
+            this.Controls.Add(this.BtnCredits);
             this.Controls.Add(this.PanelArguments);
             this.Controls.Add(this.BtnScript);
             this.Controls.Add(this.linkPatches);
@@ -152,6 +164,7 @@
         private System.Windows.Forms.LinkLabel linkPatches;
         private System.Windows.Forms.Button BtnScript;
         private System.Windows.Forms.Panel PanelArguments;
+        private System.Windows.Forms.Button BtnCredits;
     }
 }
 
