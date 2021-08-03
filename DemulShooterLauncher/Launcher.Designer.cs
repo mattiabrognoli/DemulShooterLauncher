@@ -41,9 +41,10 @@
             // 
             // BtnStart
             // 
-            this.BtnStart.Location = new System.Drawing.Point(457, 184);
+            this.BtnStart.Location = new System.Drawing.Point(686, 283);
+            this.BtnStart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnStart.Name = "BtnStart";
-            this.BtnStart.Size = new System.Drawing.Size(69, 23);
+            this.BtnStart.Size = new System.Drawing.Size(104, 35);
             this.BtnStart.TabIndex = 2;
             this.BtnStart.Text = "Start";
             this.BtnStart.UseVisualStyleBackColor = true;
@@ -53,9 +54,11 @@
             // 
             this.listBoxTarget.Dock = System.Windows.Forms.DockStyle.Left;
             this.listBoxTarget.FormattingEnabled = true;
+            this.listBoxTarget.ItemHeight = 20;
             this.listBoxTarget.Location = new System.Drawing.Point(0, 0);
+            this.listBoxTarget.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listBoxTarget.Name = "listBoxTarget";
-            this.listBoxTarget.Size = new System.Drawing.Size(217, 212);
+            this.listBoxTarget.Size = new System.Drawing.Size(324, 326);
             this.listBoxTarget.Sorted = true;
             this.listBoxTarget.TabIndex = 15;
             this.listBoxTarget.SelectedIndexChanged += new System.EventHandler(this.listBoxTarget_SelectedIndexChanged);
@@ -65,9 +68,11 @@
             // 
             this.listBoxRom.Dock = System.Windows.Forms.DockStyle.Left;
             this.listBoxRom.FormattingEnabled = true;
-            this.listBoxRom.Location = new System.Drawing.Point(217, 0);
+            this.listBoxRom.ItemHeight = 20;
+            this.listBoxRom.Location = new System.Drawing.Point(324, 0);
+            this.listBoxRom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listBoxRom.Name = "listBoxRom";
-            this.listBoxRom.Size = new System.Drawing.Size(237, 212);
+            this.listBoxRom.Size = new System.Drawing.Size(354, 326);
             this.listBoxRom.Sorted = true;
             this.listBoxRom.TabIndex = 16;
             this.listBoxRom.SelectedIndexChanged += new System.EventHandler(this.listBoxRom_SelectedIndexChanged);
@@ -76,9 +81,10 @@
             // linkWiki
             // 
             this.linkWiki.AutoSize = true;
-            this.linkWiki.Location = new System.Drawing.Point(549, 5);
+            this.linkWiki.Location = new System.Drawing.Point(824, 8);
+            this.linkWiki.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkWiki.Name = "linkWiki";
-            this.linkWiki.Size = new System.Drawing.Size(28, 13);
+            this.linkWiki.Size = new System.Drawing.Size(38, 20);
             this.linkWiki.TabIndex = 17;
             this.linkWiki.TabStop = true;
             this.linkWiki.Text = "Wiki";
@@ -87,9 +93,10 @@
             // linkHelp
             // 
             this.linkHelp.AutoSize = true;
-            this.linkHelp.Location = new System.Drawing.Point(549, 26);
+            this.linkHelp.Location = new System.Drawing.Point(824, 40);
+            this.linkHelp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkHelp.Name = "linkHelp";
-            this.linkHelp.Size = new System.Drawing.Size(49, 13);
+            this.linkHelp.Size = new System.Drawing.Size(73, 20);
             this.linkHelp.TabIndex = 18;
             this.linkHelp.TabStop = true;
             this.linkHelp.Text = "Help rom";
@@ -98,9 +105,10 @@
             // linkPatches
             // 
             this.linkPatches.AutoSize = true;
-            this.linkPatches.Location = new System.Drawing.Point(549, 47);
+            this.linkPatches.Location = new System.Drawing.Point(824, 72);
+            this.linkPatches.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkPatches.Name = "linkPatches";
-            this.linkPatches.Size = new System.Drawing.Size(73, 13);
+            this.linkPatches.Size = new System.Drawing.Size(107, 20);
             this.linkPatches.TabIndex = 19;
             this.linkPatches.TabStop = true;
             this.linkPatches.Text = "More Patches";
@@ -108,9 +116,10 @@
             // 
             // BtnScript
             // 
-            this.BtnScript.Location = new System.Drawing.Point(544, 184);
+            this.BtnScript.Location = new System.Drawing.Point(816, 283);
+            this.BtnScript.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnScript.Name = "BtnScript";
-            this.BtnScript.Size = new System.Drawing.Size(78, 23);
+            this.BtnScript.Size = new System.Drawing.Size(117, 35);
             this.BtnScript.TabIndex = 20;
             this.BtnScript.Text = "Create Script";
             this.BtnScript.UseVisualStyleBackColor = true;
@@ -118,16 +127,18 @@
             // 
             // PanelArguments
             // 
-            this.PanelArguments.Location = new System.Drawing.Point(458, 0);
+            this.PanelArguments.Location = new System.Drawing.Point(687, 0);
+            this.PanelArguments.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PanelArguments.Name = "PanelArguments";
-            this.PanelArguments.Size = new System.Drawing.Size(89, 178);
+            this.PanelArguments.Size = new System.Drawing.Size(134, 274);
             this.PanelArguments.TabIndex = 21;
             // 
             // BtnCredits
             // 
-            this.BtnCredits.Location = new System.Drawing.Point(544, 69);
+            this.BtnCredits.Location = new System.Drawing.Point(816, 106);
+            this.BtnCredits.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnCredits.Name = "BtnCredits";
-            this.BtnCredits.Size = new System.Drawing.Size(78, 23);
+            this.BtnCredits.Size = new System.Drawing.Size(117, 35);
             this.BtnCredits.TabIndex = 22;
             this.BtnCredits.Text = "Credits";
             this.BtnCredits.UseVisualStyleBackColor = true;
@@ -135,9 +146,9 @@
             // 
             // Launcher
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(627, 212);
+            this.ClientSize = new System.Drawing.Size(940, 326);
             this.Controls.Add(this.BtnCredits);
             this.Controls.Add(this.PanelArguments);
             this.Controls.Add(this.BtnScript);
@@ -147,6 +158,7 @@
             this.Controls.Add(this.listBoxRom);
             this.Controls.Add(this.listBoxTarget);
             this.Controls.Add(this.BtnStart);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Launcher";
             this.Text = "DemulShooterLauncher";
             this.Load += new System.EventHandler(this.Default_Load);

@@ -210,6 +210,7 @@ namespace DemulShooterLauncher.Controller
                 new Rom(id++, (int)IdMachines.ringwide, "Transformers: Human Alliance", "tha", new RingWideArguments()),
 
                 //ttx
+                new Rom(id++, (int)IdMachines.ttx, "Block King Ball Shooter", "bkbs", new TaitoTypeXArguments()),
                 new Rom(id++, (int)IdMachines.ttx, "Elevator Action Death Parade", "eapd", new TaitoTypeXArguments()),
                 new Rom(id++, (int)IdMachines.ttx, "Silent Hill: The Arcade", "sha", new TaitoTypeXArguments()),
                 new Rom(id++, (int)IdMachines.ttx, "Gaia Attack 4", "gattack4", new TaitoTypeXArguments()),
